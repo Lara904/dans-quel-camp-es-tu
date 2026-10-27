@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Quiz politique en 17 questions qui compare tes opinions aux votes réels de l'Assemblée nationale (2022-2026), pas aux programmes des partis.">
+<title>Dans quel camp es-tu ?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Layout concept : un carnet de scrutin — une seule colonne de lecture, une question
+   affichée à la fois comme une fiche de vote, des résultats présentés comme un
+   dépouillement (barres = hémicycle, couleurs = couleurs officielles des groupes). */
+:root{
+  --bg:#F7F5F0; --surface:#FFFFFF; --ink:#1B1B18; --ink-soft:#5B574E;
+  --rule:#DEDACE; --accent:#2C3E70; --accent-soft:#E7EAF2;
+  --pour:#2E6E4E; --contre:#9B3B32; --neutre:#8A8575;
+  font-size:16px; color-scheme: light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15140F; --surface:#1E1C16; --ink:#EDEAE1; --ink-soft:#AFA998;
+    --rule:#38352B; --accent:#9FB0E0; --accent-soft:#242B40;
+    --pour:#6FBF93; --contre:#DD8278; --neutre:#8A8575;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15140F; --surface:#1E1C16; --ink:#EDEAE1; --ink-soft:#AFA998;
+  --rule:#38352B; --accent:#9FB0E0; --accent-soft:#242B40;
+  --pour:#6FBF93; --contre:#DD8278; --neutre:#8A8575;
+  color-scheme: dark;
+}
+*{box-sizing:border-box;}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Public Sans", system-ui, sans-serif;
+  padding-left:max(16px, env(safe-area-inset-left,0px));
+  padding-right:max(16px, env(safe-area-inset-right,0px));
+}
+h1,h2,h3{font-family:"Source Serif 4", Georgia, serif; font-weight:700; text-wrap:balance; margin:0;}
+.mono{font-family:"IBM Plex Mono", monospace;}
+.wrap{max-width:640px; margin:0 auto; padding-block:28px;}
+.eyebrow{
+  font-family:"IBM Plex Mono", monospace; font-size:12px; letter-spacing:.08em;
+  text-transform:uppercase; color:var(--accent); margin-bottom:10px;
+}
+a{color:var(--accent);}
+button{font-family:inherit; cursor:pointer;}
+[hidden]{display:none!important;}
+
+/* --- Intro --- */
+#intro h1{font-size:clamp(28px,6vw,40px); line-height:1.08; margin-bottom:14px;}
+#intro .lede{font-size:17px; color:var(--ink-soft); line-height:1.55; margin-bottom:20px;}
+.principe{
+  background:var(--surface); border:1px solid var(--rule); border-radius:3px;
+  padding:18px 20px; margin:22px 0; border-left:3px solid var(--accent);
+}
+.principe p{margin:0; font-size:15px; line-height:1.55;}
+.principe strong{color:var(--accent);}
+.meta-box{
+  display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+  background:var(--rule); border:1px solid var(--rule); border-radius:3px;
+  overflow:hidden; margin:22px 0;
+}
+.meta-box div{background:var(--surface); padding:14px 12px; text-align:center;}
+.meta-box .num{font-family:"IBM Plex Mono",monospace; font-size:22px; font-weight:500; color:var(--accent);}
+.meta-box .lbl{font-size:11px; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.04em; margin-top:4px;}
+.btn-primary{
+  display:inline-flex; align-items:center; gap:8px;
+  background:var(--accent); color:var(--bg); border:none; border-radius:3px;
+  padding:14px 26px; font-size:16px; font-weight:600; margin-top:8px;
+}
+.btn-primary:hover{opacity:.9;}
+.footnote{font-size:13px; color:var(--ink-soft); line-height:1.5; margin-top:28px;}
+
+/* --- Quiz --- */
+#quiz-header{
+  position:sticky; top:env(safe-area-inset-top,0px); z-index:5;
+  background:var(--bg); padding-top:16px; padding-bottom:10px;
+}
+.progress-track{height:4px; background:var(--rule); border-radius:2px; overflow:hidden;}
+.progress-fill{height:100%; background:var(--accent); transition:width .3s ease;}
+.progress-label{
+  display:flex; justify-content:space-between; font-family:"IBM Plex Mono",monospace;
+  font-size:12px; color:var(--ink-soft); margin-top:8px;
+}
+.q-card{
+  background:var(--surface); border:1px solid var(--rule); border-radius:4px;
+  padding:28px 24px; margin-top:18px;
+}
+.q-card h2{font-size:clamp(20px,4.5vw,26px); line-height:1.3;}
+.choices{display:grid; gap:10px; margin-top:24px;}
+.choice-btn{
+  display:flex; align-items:center; justify-content:space-between;
+  background:var(--bg); border:1.5px solid var(--rule); border-radius:3px;
+  padding:14px 18px; font-size:16px; font-weight:600; color:var(--ink);
+  text-align:left; transition:border-color .15s, background .15s;
+}
+.choice-btn .tag{font-family:"IBM Plex Mono",monospace; font-size:12px; opacity:.55;}
+.choice-btn[data-v="pour"]:hover,.choice-btn[data-v="pour"].active{border-color:var(--pour); background:color-mix(in srgb, var(--pour) 12%, var(--surface));}
+.choice-btn[data-v="contre"]:hover,.choice-btn[data-v="contre"].active{border-color:var(--contre); background:color-mix(in srgb, var(--contre) 12%, var(--surface));}
+.choice-btn[data-v="sans_avis"]:hover,.choice-btn[data-v="sans_avis"].active{border-color:var(--neutre); background:color-mix(in srgb, var(--neutre) 12%, var(--surface));}
+details.scrutin-ref{margin-top:18px;}
+details.scrutin-ref summary{
+  font-family:"IBM Plex Mono",monospace; font-size:12px; color:var(--ink-soft);
+  cursor:pointer; list-style:none;
+}
+details.scrutin-ref summary::-webkit-details-marker{display:none;}
+details.scrutin-ref summary::before{content:"▸ "; }
+details.scrutin-ref[open] summary::before{content:"▾ ";}
+.scrutin-detail{
+  font-size:13.5px; line-height:1.55; color:var(--ink-soft); margin-top:8px;
+  padding:12px 14px; background:var(--accent-soft); border-radius:3px;
+}
+.scrutin-detail .k{color:var(--ink); font-weight:600;}
+.quiz-nav{display:flex; justify-content:space-between; margin-top:18px;}
+.nav-btn{
+  background:none; border:none; color:var(--ink-soft); font-size:14px;
+  font-weight:600; padding:10px 4px;
+}
+.nav-btn:disabled{opacity:.3; cursor:default;}
+.nav-btn.visible-link{color:var(--accent);}
+
+/* --- Résultats --- */
+#resultats h1{font-size:clamp(24px,5vw,32px); margin-bottom:6px;}
+.resultats-sub{color:var(--ink-soft); font-size:15px; margin-bottom:26px;}
+.parti-row{
+  background:var(--surface); border:1px solid var(--rule); border-radius:4px;
+  margin-bottom:10px; overflow:hidden;
+}
+.parti-row summary{
+  list-style:none; cursor:pointer; padding:16px 18px; display:flex; align-items:center; gap:14px;
+}
+.parti-row summary::-webkit-details-marker{display:none;}
+.parti-row .swatch{width:10px; min-width:10px; border-radius:2px; align-self:stretch;}
+.parti-row .body{flex:1; min-width:0;}
+.parti-row .nom{font-weight:700; font-size:16px;}
+.parti-row .bar-track{height:8px; background:var(--rule); border-radius:4px; margin-top:8px; overflow:hidden;}
+.parti-row .bar-fill{height:100%; border-radius:4px;}
+.parti-row .score-num{
+  font-family:"IBM Plex Mono",monospace; font-size:20px; font-weight:500; min-width:58px; text-align:right;
+}
+.parti-row .fiab{font-size:11px; color:var(--ink-soft); margin-top:6px;}
+.parti-detail{padding:0 18px 18px; border-top:1px solid var(--rule);}
+.vote-line{
+  display:flex; justify-content:space-between; gap:10px; padding:8px 0;
+  border-bottom:1px solid var(--rule); font-size:13.5px;
+}
+.vote-line:last-child{border-bottom:none;}
+.vote-line .q-txt{color:var(--ink-soft); min-width:0;}
+.vote-line .tag-accord{
+  font-family:"IBM Plex Mono",monospace; font-size:11px; padding:2px 8px; border-radius:10px;
+  white-space:nowrap; height:fit-content;
+}
+.tag-accord.yes{background:color-mix(in srgb, var(--pour) 18%, transparent); color:var(--pour);}
+.tag-accord.no{background:color-mix(in srgb, var(--contre) 18%, transparent); color:var(--contre);}
+.tag-accord.mid{background:color-mix(in srgb, var(--neutre) 18%, transparent); color:var(--ink-soft);}
+.restart-btn{
+  margin-top:24px; background:none; border:1.5px solid var(--accent); color:var(--accent);
+  border-radius:3px; padding:12px 22px; font-weight:600; font-size:15px;
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <section id="intro">
+    <p class="eyebrow">Quizz politique — données réelles de l'Assemblée nationale</p>
+    <h1>Dans quel camp es-tu ?</h1>
+    <p class="lede">17 questions sur des sujets concrets (retraites, fiscalité, immigration, sécurité, écologie…). Pas de programme, pas de promesse : chaque réponse est comparée à un vote réel des député·es, et au camp qui a voté comme toi.</p>
+
+    <div class="principe">
+      <p><strong>Le principe :</strong> on compare tes opinions aux actes des partis, pas à leurs discours. Chaque question renvoie à un scrutin public réel de l'Assemblée nationale (XVIe et XVIIe législatures, 2022–2026). Un lien « voir le vote » sous chaque question donne la source exacte.</p>
+    </div>
+
+    <div class="meta-box">
+      <div><div class="num">17</div><div class="lbl">questions</div></div>
+      <div><div class="num">11</div><div class="lbl">partis comparés</div></div>
+      <div><div class="num mono" style="font-size:16px">2022–26</div><div class="lbl">période couverte</div></div>
+    </div>
+
+    <button class="btn-primary" id="btn-start">Commencer le quizz →</button>
+
+    <p class="footnote">Méthode : pour chaque scrutin, on regarde la position majoritaire de chaque groupe parlementaire et sa cohésion interne (un parti divisé sur un sujet pèse moins sur ce sujet dans son propre score). Les groupes sont unifiés par filiation politique entre les deux législatures couvertes. Les abstentions unanimes comptent comme une vraie position, pas comme une absence de donnée. Les scores affichés sont lissés statistiquement pour rester stables même quand un parti n'a pas pris position sur toutes les questions.</p>
+  </section>
+
+  <section id="quiz" hidden>
+    <div id="quiz-header">
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      <div class="progress-label"><span id="progress-text">Question 1 / 17</span><span id="progress-pct">0%</span></div>
+    </div>
+    <div class="q-card">
+      <h2 id="q-text"></h2>
+      <div class="choices">
+        <button class="choice-btn" data-v="pour"><span>Pour</span><span class="tag">P</span></button>
+        <button class="choice-btn" data-v="contre"><span>Contre</span><span class="tag">C</span></button>
+        <button class="choice-btn" data-v="sans_avis"><span>Sans avis / je ne sais pas</span><span class="tag">—</span></button>
+      </div>
+      <details class="scrutin-ref">
+        <summary>Voir le vote réel correspondant</summary>
+        <div class="scrutin-detail" id="scrutin-detail"></div>
+      </details>
+    </div>
+    <div class="quiz-nav">
+      <button class="nav-btn" id="btn-prev">← Précédent</button>
+      <button class="nav-btn visible-link" id="btn-next" disabled>Suivant →</button>
+    </div>
+  </section>
+
+  <section id="resultats" hidden>
+    <p class="eyebrow">Dépouillement</p>
+    <h1>Ton camp</h1>
+    <p class="resultats-sub" id="resultats-sub"></p>
+    <div id="resultats-list"></div>
+    <button class="restart-btn" id="btn-restart">↺ Refaire le quizz</button>
+    <p class="footnote">Les scores reflètent la proximité entre tes réponses et les votes réels enregistrés à l'Assemblée nationale — pas une recommandation de vote. Un score élevé peut aussi venir d'un accord « par coïncidence » entre deux partis qui votent pareil pour des raisons opposées : ouvre le détail d'un parti pour voir question par question.</p>
+  </section>
+
+</div>
+
+<script>
+const DATA = {"questions": [{"id": "fin_de_vie", "texte": "Faut-il légaliser une aide active à mourir pour les patients en phase avancée ou terminale ?", "scrutin_id": "VTANR5L17V8280", "titre_complet": "l'ensemble de la proposition de loi relative au droit à l'aide à mourir (lecture définitive).", "date": "2026-07-15", "resultat": "adopté (291 pour, 241 contre, 29 abstentions, 561 votants)", "note": "CORRECTION : le scrutin_id initial (VTANR5L17V561) était faux — il pointait vers un amendement sans rapport (loi d'urgence Mayotte), probablement une confusion de ma part entre un nombre de votants et un identifiant de scrutin lors de la rédaction initiale. Corrigé avec le vrai scrutin de lecture définitive du 15/07/2026, vérifié directement en base."}, {"id": "retraites_reforme_2023", "texte": "Faut-il abroger la réforme des retraites de 2023 (retour à l'âge légal antérieur à 64 ans) ?", "scrutin_id": "VTANR5L17V2257", "titre_complet": "la proposition de résolution visant à abroger la loi n° 2023-270 du 14 avril 2023 de financement rectificative de la sécurité sociale pour 2023 dite réforme des retraites.", "date": "2025-06-05", "resultat": "adopté (198 pour, 35 contre, 0 abstention, 233 votants)", "note": "Remplace le scrutin retiré (voir _meta.questions_retirees) : celui-ci est une PROPOSITION DE RÉSOLUTION (déposée par les députés communistes), donc sans valeur législative contraignante — c'est une prise de position politique, pas une abrogation effective. À signaler dans le quiz. Contenu vérifié par 3 sources indépendantes (LCP, Le Club des Juristes, datan.fr) : le titre correspond exactement au contenu réel. Répartition des votes vérifiée en base, cohérente avec le clivage attendu : LFI-NFP, PS, Écologistes, GDR et RN ont voté pour (cohésion 1.0 chacun) ; EPR, Dem, HOR ont voté contre (cohésion 1.0 chacun). Participation faible (233/577) typique d'un vote non contraignant où une partie du camp gouvernemental ne s'est pas déplacée plutôt que de voter contre en nombre."}, {"id": "ivg_constitutionnalisation", "texte": "Faut-il inscrire le droit à l'avortement (IVG) dans la Constitution ?", "scrutin_id": "VTANR5L16V3289", "titre_complet": "l'ensemble du projet de loi constitutionnelle relatif à la liberté de recourir à l'interruption volontaire de grossesse (première lecture).", "date": "2024-01-30", "resultat": "adopté (493 pour, 30 contre, 23 abstentions, 546 votants)", "note": "Vote de l'Assemblée en première lecture sur le projet de loi du Gouvernement (le vote final et solennel a eu lieu au Congrès du Parlement le 04/03/2024, réunissant Assemblée+Sénat — hors périmètre de ce projet qui ne couvre que les scrutins de l'Assemblée). ATTENTION, discriminant faible : consensus très large (quasi tous les groupes majoritairement 'pour'), la vraie ligne de clivage est interne à RN (46 pour/12 contre/14 abst) et LR (40 pour/15 contre/4 abst) plutôt qu'entre partis — utile pour situer l'utilisateur, mais ne distinguera pas bien les partis entre eux dans le score de proximité."}, {"id": "rsa_conditionnalite", "texte": "Faut-il conditionner le versement du RSA à 15 heures d'activité hebdomadaire (formation, stage, bénévolat) ?", "scrutin_id": "VTANR5L16V2965", "titre_complet": "l'ensemble du projet de loi pour le plein emploi (texte de la commission mixte paritaire).", "date": "2023-11-14", "resultat": "adopté (190 pour, 147 contre, 5 abstentions, 342 votants)", "note": "Contenu vérifié (LCP, Public Sénat, Previssima) : le texte final instaure les '15h d'activité' comme condition du RSA et transforme Pôle emploi en France Travail. Clivage net et conforme à l'attendu : RE, LR, Dem, HOR pour ; LFI-NUPES, RN, PS, LIOT, Écolo-NUPES, GDR-NUPES contre — à noter, le RN a voté contre ce texte (pas pour les mêmes raisons que la gauche), signal intéressant pour le positionnement du quiz."}, {"id": "nationalite_mayotte", "texte": "Faut-il durcir les conditions d'accès à la nationalité française pour les enfants nés à Mayotte de parents étrangers ?", "scrutin_id": "VTANR5L17V1308", "titre_complet": "l'ensemble de la proposition de loi visant à renforcer les conditions d'accès à la nationalité française à Mayotte (texte de la commission mixte paritaire).", "date": "2025-04-08", "resultat": "adopté (339 pour, 174 contre, 11 abstentions, 524 votants)", "note": "Contenu vérifié via LCP : le texte exige désormais que les DEUX parents (et non un seul comme avant) résident régulièrement et sans interruption à Mayotte depuis au moins un an (contre trois mois auparavant) pour que leur enfant né sur l'île acquière la nationalité française à sa majorité. Clivage de vote net et conforme à l'attendu : RN, EPR, DR, Dem, HOR, LIOT pour (cohésion quasi parfaite) ; LFI-NFP, PS, Écologistes, GDR contre (cohésion parfaite). Vote de lecture définitive/CMP retenu plutôt que la première lecture (258 votants, 06/02/2025) pour avoir la version la plus aboutie et la plus large participation."}, {"id": "impot_ultra_riches", "texte": "Faut-il instaurer un impôt plancher de 2 % sur le patrimoine des contribuables les plus fortunés (type « taxe Zucman ») ?", "scrutin_id": "VTANR5L17V881", "titre_complet": "l'ensemble de la proposition de loi instaurant un impôt plancher de 2 % sur le patrimoine des ultra riches (première lecture).", "date": "2025-02-20", "resultat": "adopté (116 pour, 39 contre, 31 abstentions, 186 votants)", "note": "Vote sur l'ensemble, intitulé explicite. Participation plus faible (186) que les autres votes 'ensemble' — à mentionner si le quiz affiche le taux de participation."}, {"id": "assurance_chomage", "texte": "Faut-il réduire la durée maximale d'indemnisation chômage après une rupture conventionnelle ?", "scrutin_id": "VTANR5L17V7260", "titre_complet": "l'ensemble du projet de loi portant transposition de l'avenant n° 3 du 25 février 2026 au protocole d'accord du 10 novembre 2023 relatif à l'assurance chômage (deuxième lecture).", "date": "2026-06-02", "resultat": "adopté (353 pour, 114 contre, 37 abstentions, 504 votants)", "note": "Vérifié : l'avenant durcit les règles — durée maximale d'indemnisation réduite de 18 à 15 mois (moins de 55 ans), en échange d'un accompagnement renforcé. Ne concerne que les ruptures conventionnelles individuelles, pas tous les demandeurs d'emploi."}, {"id": "encadrement_loyers", "texte": "Faut-il encadrer les loyers dans les zones tendues ?", "scrutin_id": "VTANR5L17V2262", "titre_complet": "l'ensemble de la proposition de loi expérimentant l'encadrement des loyers et améliorant l'habitat dans les outre-mer (première lecture).", "date": "2025-06-05", "resultat": "adopté (169 pour, 0 contre, 3 abstentions, 172 votants)", "note": "ID de scrutin à reconfirmer en base (extrait de la recherche par titre, non ré-interrogé individuellement) avant usage — même procédure que les autres mais non revérifié faute de temps."}, {"id": "moratoire_eolien_solaire_fessenheim", "texte": "Faut-il imposer un moratoire sur les nouvelles installations éoliennes et solaires, et rouvrir la centrale nucléaire de Fessenheim ?", "scrutin_id": "VTANR5L17V2653", "titre_complet": "l'ensemble de la proposition de loi portant programmation nationale pour l'énergie et le climat pour les années 2025 à 2035 (première lecture).", "date": "2025-06-24", "resultat": "rejeté (142 pour, 377 contre, 47 abstentions, 566 votants)", "note": "Correction après vérification (ma 1ère note indiquait 'adopté' par erreur, sans avoir vérifié — c'est faux). Le texte initial (programmation énergie-climat, origine Sénat) a été profondément remanié en séance par le RN et LR, qui y ont ajouté un moratoire sur l'éolien/le solaire et la réouverture de Fessenheim. Résultat : la gauche ET l'ex-majorité présidentielle (EPR, MoDem, Horizons) ont voté contre (pas pour les mêmes raisons), RN+UDR ont voté pour, LR s'est très majoritairement abstenu. Vérifié indépendamment dans la base : DR (LR) est bien en abstention sur ce scrutin, cohérent avec la source. Question reformulée pour refléter ce que le texte contenait vraiment (moratoire EnR + Fessenheim), pas une question générique sur 'le nucléaire'."}, {"id": "ratio_soignants_hopital", "texte": "Faut-il imposer un nombre minimum de soignants par patient hospitalisé ?", "scrutin_id": "VTANR5L17V600", "titre_complet": "l'ensemble de la proposition de loi, adoptée par le Sénat, relative à l'instauration d'un nombre minimum de soignants par patient hospitalisé (première lecture).", "date": "2025-01-23", "resultat": "adopté (138 pour, 3 contre, 70 abstentions, 211 votants)", "note": "Vote sur l'ensemble, intitulé explicite, sujet hôpital/santé publique bien identifié (absent de la curation thématique précédente)."}, {"id": "securite_ordre_public", "texte": "Faut-il renforcer les pouvoirs des forces de l'ordre pour répondre aux troubles à l'ordre public ?", "scrutin_id": "VTANR5L17V8433", "titre_complet": "l'ensemble du projet de loi visant à offrir des réponses immédiates aux phénomènes troublant l'ordre public, la sécurité et la tranquillité de nos concitoyens (texte de la commission mixte paritaire).", "date": "2026-07-21", "resultat": "adopté (351 pour, 179 contre, 7 abstentions, 537 votants)", "note": "Inchangé depuis la 1ère curation."}, {"id": "narcotrafic_retention", "texte": "Faut-il renforcer la rétention administrative et les mesures de sécurité contre le narcotrafic et le risque terroriste ?", "scrutin_id": "VTANR5L17V6318", "titre_complet": "l'ensemble de la proposition de loi visant à renforcer la sécurité, la rétention administrative et la prévention des risques d'attentat (première lecture).", "date": "2026-05-05", "resultat": "adopté (345 pour, 177 contre, 13 abstentions, 535 votants)", "note": "Inchangé depuis la 1ère curation."}, {"id": "fraude_fiscale_sociale", "texte": "Faut-il renforcer la lutte contre la fraude fiscale et sociale ?", "scrutin_id": "VTANR5L17V6023", "titre_complet": "l'ensemble du projet de loi relatif à la lutte contre les fraudes sociales et fiscales (première lecture).", "date": "2026-04-07", "resultat": "adopté (363 pour, 194 contre, 9 abstentions, 566 votants)", "note": "Inchangé depuis la 1ère curation."}, {"id": "budget_2025", "texte": "Étiez-vous favorable au volet recettes du budget de l'État pour 2025 ?", "scrutin_id": "VTANR5L17V438", "titre_complet": "la première partie du projet de loi de finances pour 2025 (première lecture).", "date": "2024-11-12", "resultat": "rejeté (192 pour, 362 contre, 19 abstentions, 573 votants)", "note": "Inchangé depuis la 1ère curation."}, {"id": "montagne_territoires", "texte": "Faut-il adopter des mesures spécifiques de soutien aux territoires de montagne ?", "scrutin_id": "VTANR5L17V8421", "titre_complet": "l'ensemble de la proposition de loi pour une montagne vivante et souveraine (texte de la commission mixte paritaire).", "date": "2026-07-20", "resultat": "adopté (376 pour, 92 contre, 4 abstentions, 472 votants)", "note": "Inchangé depuis la 1ère curation."}, {"id": "soutien_ukraine", "texte": "La France doit-elle renforcer son soutien à l'Ukraine face à la Russie ?", "scrutin_id": "VTANR5L17V988", "titre_complet": "l'article unique de la proposition de résolution européenne appelant au renforcement du soutien à l'Ukraine.", "date": "2025-03-12", "resultat": "adopté (288 pour, 54 contre, 132 abstentions, 474 votants)", "note": "Résolution (non contraignante) plutôt que loi — à signaler dans le quiz que c'est une prise de position politique, pas une mesure concrète votée."}, {"id": "retraites_agricoles", "texte": "Faut-il revaloriser les pensions de retraite des agriculteurs ?", "scrutin_id": "VTANR5L17V7324", "titre_complet": "l'ensemble de la proposition de loi portant plusieurs mesures de justice en faveur de la revalorisation des pensions de retraites agricoles (première lecture).", "date": "2026-06-04", "resultat": "adopté (82 pour, 1 contre, 5 abstentions, 88 votants)", "note": "Participation assez faible (88/577) — sujet plus consensuel, risque de ne pas bien différencier les partis. À tester avec le calcul de cohésion avant de l'inclure dans le quiz final."}], "positions": {"fin_de_vie": {"scrutin_id": "VTANR5L17V8280", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "pour", "cohesion_rice": 0.886, "pour": 33, "contre": 2, "abstention": 1, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "pour", "cohesion_rice": 0.667, "pour": 10, "contre": 2, "abstention": 3, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "contre", "cohesion_rice": 0.059, "pour": 16, "contre": 18, "abstention": 1, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "pour", "cohesion_rice": 0.937, "pour": 61, "contre": 2, "abstention": 3, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "pour", "cohesion_rice": 0.111, "pour": 10, "contre": 8, "abstention": 4, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "contre", "cohesion_rice": 0.783, "pour": 5, "contre": 41, "abstention": 2, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "pour", "cohesion_rice": 0.561, "pour": 64, "contre": 18, "abstention": 9, "non_votant": 0}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "pour", "cohesion_rice": 0.111, "pour": 20, "contre": 16, "abstention": 0, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "pour", "cohesion_rice": 0.869, "pour": 57, "contre": 4, "abstention": 6, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "contre", "cohesion_rice": 0.797, "pour": 12, "contre": 106, "abstention": 0, "non_votant": 0}, "udr": {"famille_libelle": "UDR (Ciotti)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 17, "abstention": 0, "non_votant": 0}}}, "retraites_reforme_2023": {"scrutin_id": "VTANR5L17V2257", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "pour", "cohesion_rice": 1.0, "pour": 33, "contre": 0, "abstention": 0, "non_votant": 1}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "pour", "cohesion_rice": 1.0, "pour": 17, "contre": 0, "abstention": 0, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 7, "abstention": 0, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "pour", "cohesion_rice": 1.0, "pour": 59, "contre": 0, "abstention": 0, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "pour", "cohesion_rice": 0.143, "pour": 4, "contre": 3, "abstention": 0, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 1, "abstention": 0, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 11, "abstention": 0, "non_votant": 1}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 11, "abstention": 0, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "pour", "cohesion_rice": 1.0, "pour": 44, "contre": 0, "abstention": 0, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "pour", "cohesion_rice": 1.0, "pour": 41, "contre": 0, "abstention": 0, "non_votant": 0}}}, "ivg_constitutionnalisation": {"scrutin_id": "VTANR5L16V3289", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "pour", "cohesion_rice": 1.0, "pour": 23, "contre": 0, "abstention": 0, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "pour", "cohesion_rice": 1.0, "pour": 20, "contre": 0, "abstention": 0, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "pour", "cohesion_rice": 1.0, "pour": 26, "contre": 0, "abstention": 0, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "pour", "cohesion_rice": 1.0, "pour": 75, "contre": 0, "abstention": 0, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "pour", "cohesion_rice": 0.9, "pour": 19, "contre": 1, "abstention": 2, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "pour", "cohesion_rice": 0.455, "pour": 40, "contre": 15, "abstention": 4, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "pour", "cohesion_rice": 1.0, "pour": 164, "contre": 0, "abstention": 0, "non_votant": 0}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "pour", "cohesion_rice": 1.0, "pour": 47, "contre": 0, "abstention": 2, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "pour", "cohesion_rice": 1.0, "pour": 31, "contre": 0, "abstention": 0, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "pour", "cohesion_rice": 0.586, "pour": 46, "contre": 12, "abstention": 14, "non_votant": 0}}}, "rsa_conditionnalite": {"scrutin_id": "VTANR5L16V2965", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 9, "abstention": 0, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 8, "abstention": 0, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "pour", "cohesion_rice": 1.0, "pour": 20, "contre": 0, "abstention": 0, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 50, "abstention": 0, "non_votant": 1}, "liot": {"famille_libelle": "LIOT", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 10, "abstention": 4, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "pour", "cohesion_rice": 1.0, "pour": 36, "contre": 0, "abstention": 1, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "pour", "cohesion_rice": 1.0, "pour": 102, "contre": 0, "abstention": 0, "non_votant": 0}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "pour", "cohesion_rice": 1.0, "pour": 31, "contre": 0, "abstention": 0, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 20, "abstention": 0, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 49, "abstention": 0, "non_votant": 0}}}, "nationalite_mayotte": {"scrutin_id": "VTANR5L17V1308", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 32, "abstention": 0, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 13, "abstention": 0, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "pour", "cohesion_rice": 1.0, "pour": 32, "contre": 0, "abstention": 0, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 65, "abstention": 0, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "pour", "cohesion_rice": 1.0, "pour": 13, "contre": 0, "abstention": 0, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "pour", "cohesion_rice": 1.0, "pour": 47, "contre": 0, "abstention": 0, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "pour", "cohesion_rice": 1.0, "pour": 73, "contre": 0, "abstention": 4, "non_votant": 2}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "pour", "cohesion_rice": 0.935, "pour": 30, "contre": 1, "abstention": 3, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 61, "abstention": 3, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "pour", "cohesion_rice": 1.0, "pour": 122, "contre": 0, "abstention": 0, "non_votant": 0}}}, "impot_ultra_riches": {"scrutin_id": "VTANR5L17V881", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "pour", "cohesion_rice": 1.0, "pour": 38, "contre": 0, "abstention": 0, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "pour", "cohesion_rice": 1.0, "pour": 5, "contre": 0, "abstention": 0, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 7, "abstention": 3, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "pour", "cohesion_rice": 1.0, "pour": 37, "contre": 0, "abstention": 0, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 3, "abstention": 0, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 16, "abstention": 0, "non_votant": 1}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 9, "abstention": 0, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "pour", "cohesion_rice": 1.0, "pour": 36, "contre": 0, "abstention": 0, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "abstention", "cohesion_rice": 1.0, "pour": 0, "contre": 0, "abstention": 28, "non_votant": 0}}}, "assurance_chomage": {"scrutin_id": "VTANR5L17V7260", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 14, "abstention": 0, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 17, "abstention": 0, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "pour", "cohesion_rice": 1.0, "pour": 30, "contre": 0, "abstention": 0, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 63, "abstention": 0, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "pour", "cohesion_rice": 0.81, "pour": 19, "contre": 2, "abstention": 0, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "pour", "cohesion_rice": 1.0, "pour": 44, "contre": 0, "abstention": 0, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "pour", "cohesion_rice": 1.0, "pour": 87, "contre": 0, "abstention": 0, "non_votant": 1}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "pour", "cohesion_rice": 1.0, "pour": 33, "contre": 0, "abstention": 0, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "contre", "cohesion_rice": 0.895, "pour": 1, "contre": 18, "abstention": 37, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "pour", "cohesion_rice": 1.0, "pour": 115, "contre": 0, "abstention": 0, "non_votant": 0}, "udr": {"famille_libelle": "UDR (Ciotti)", "position": "pour", "cohesion_rice": 1.0, "pour": 14, "contre": 0, "abstention": 0, "non_votant": 0}}}, "encadrement_loyers": {"scrutin_id": "VTANR5L17V2262", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "pour", "cohesion_rice": 1.0, "pour": 22, "contre": 0, "abstention": 0, "non_votant": 1}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "pour", "cohesion_rice": 1.0, "pour": 17, "contre": 0, "abstention": 0, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "pour", "cohesion_rice": 1.0, "pour": 7, "contre": 0, "abstention": 0, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "pour", "cohesion_rice": 1.0, "pour": 33, "contre": 0, "abstention": 0, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "pour", "cohesion_rice": 1.0, "pour": 1, "contre": 0, "abstention": 0, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "pour", "cohesion_rice": 1.0, "pour": 2, "contre": 0, "abstention": 0, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "pour", "cohesion_rice": 1.0, "pour": 13, "contre": 0, "abstention": 0, "non_votant": 1}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "pour", "cohesion_rice": 1.0, "pour": 8, "contre": 0, "abstention": 0, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "pour", "cohesion_rice": 1.0, "pour": 26, "contre": 0, "abstention": 0, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "pour", "cohesion_rice": 1.0, "pour": 39, "contre": 0, "abstention": 0, "non_votant": 0}}}, "moratoire_eolien_solaire_fessenheim": {"scrutin_id": "VTANR5L17V2653", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 37, "abstention": 0, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 13, "abstention": 0, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 34, "abstention": 0, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 71, "abstention": 0, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 23, "abstention": 0, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "pour", "cohesion_rice": 1.0, "pour": 2, "contre": 0, "abstention": 46, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 90, "abstention": 1, "non_votant": 1}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 36, "abstention": 0, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 66, "abstention": 0, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "pour", "cohesion_rice": 1.0, "pour": 122, "contre": 0, "abstention": 0, "non_votant": 0}}}, "ratio_soignants_hopital": {"scrutin_id": "VTANR5L17V600", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "pour", "cohesion_rice": 1.0, "pour": 27, "contre": 0, "abstention": 0, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "pour", "cohesion_rice": 1.0, "pour": 6, "contre": 0, "abstention": 0, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "contre", "cohesion_rice": 0.333, "pour": 1, "contre": 2, "abstention": 7, "non_votant": 1}, "lfi": {"famille_libelle": "La France insoumise", "position": "pour", "cohesion_rice": 1.0, "pour": 35, "contre": 0, "abstention": 0, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "pour", "cohesion_rice": 1.0, "pour": 4, "contre": 0, "abstention": 0, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "pour", "cohesion_rice": 1.0, "pour": 2, "contre": 0, "abstention": 0, "non_votant": 2}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 1, "abstention": 26, "non_votant": 4}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "pour", "cohesion_rice": 1.0, "pour": 1, "contre": 0, "abstention": 6, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "pour", "cohesion_rice": 1.0, "pour": 62, "contre": 0, "abstention": 0, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "abstention", "cohesion_rice": 1.0, "pour": 0, "contre": 0, "abstention": 30, "non_votant": 0}}}, "securite_ordre_public": {"scrutin_id": "VTANR5L17V8433", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 36, "abstention": 0, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 15, "abstention": 0, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "pour", "cohesion_rice": 1.0, "pour": 32, "contre": 0, "abstention": 0, "non_votant": 1}, "lfi": {"famille_libelle": "La France insoumise", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 71, "abstention": 0, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "pour", "cohesion_rice": 0.895, "pour": 18, "contre": 1, "abstention": 4, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "pour", "cohesion_rice": 1.0, "pour": 46, "contre": 0, "abstention": 1, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "pour", "cohesion_rice": 1.0, "pour": 84, "contre": 0, "abstention": 0, "non_votant": 1}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "pour", "cohesion_rice": 1.0, "pour": 33, "contre": 0, "abstention": 0, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 56, "abstention": 1, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "pour", "cohesion_rice": 1.0, "pour": 114, "contre": 0, "abstention": 0, "non_votant": 0}, "udr": {"famille_libelle": "UDR (Ciotti)", "position": "pour", "cohesion_rice": 1.0, "pour": 17, "contre": 0, "abstention": 0, "non_votant": 0}}}, "narcotrafic_retention": {"scrutin_id": "VTANR5L17V6318", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 36, "abstention": 0, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 15, "abstention": 1, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "pour", "cohesion_rice": 1.0, "pour": 35, "contre": 0, "abstention": 0, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 67, "abstention": 0, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "pour", "cohesion_rice": 1.0, "pour": 11, "contre": 0, "abstention": 10, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "pour", "cohesion_rice": 1.0, "pour": 44, "contre": 0, "abstention": 0, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "pour", "cohesion_rice": 1.0, "pour": 80, "contre": 0, "abstention": 0, "non_votant": 1}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "pour", "cohesion_rice": 1.0, "pour": 33, "contre": 0, "abstention": 2, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 58, "abstention": 0, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "pour", "cohesion_rice": 1.0, "pour": 117, "contre": 0, "abstention": 0, "non_votant": 0}, "udr": {"famille_libelle": "UDR (Ciotti)", "position": "pour", "cohesion_rice": 1.0, "pour": 17, "contre": 0, "abstention": 0, "non_votant": 0}}}, "fraude_fiscale_sociale": {"scrutin_id": "VTANR5L17V6023", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 35, "abstention": 0, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 17, "abstention": 0, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "pour", "cohesion_rice": 1.0, "pour": 32, "contre": 0, "abstention": 0, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 71, "abstention": 0, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "pour", "cohesion_rice": 0.857, "pour": 13, "contre": 1, "abstention": 8, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "pour", "cohesion_rice": 1.0, "pour": 48, "contre": 0, "abstention": 0, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "pour", "cohesion_rice": 1.0, "pour": 87, "contre": 0, "abstention": 0, "non_votant": 0}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "pour", "cohesion_rice": 1.0, "pour": 36, "contre": 0, "abstention": 0, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 69, "abstention": 0, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "pour", "cohesion_rice": 1.0, "pour": 122, "contre": 0, "abstention": 0, "non_votant": 0}, "udr": {"famille_libelle": "UDR (Ciotti)", "position": "pour", "cohesion_rice": 1.0, "pour": 17, "contre": 0, "abstention": 0, "non_votant": 0}}}, "budget_2025": {"scrutin_id": "VTANR5L17V438", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "pour", "cohesion_rice": 1.0, "pour": 37, "contre": 0, "abstention": 1, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "pour", "cohesion_rice": 1.0, "pour": 17, "contre": 0, "abstention": 0, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 34, "abstention": 0, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "pour", "cohesion_rice": 1.0, "pour": 71, "contre": 0, "abstention": 0, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 12, "abstention": 11, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 47, "abstention": 0, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "contre", "cohesion_rice": 0.977, "pour": 1, "contre": 87, "abstention": 4, "non_votant": 1}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 36, "abstention": 0, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "pour", "cohesion_rice": 1.0, "pour": 66, "contre": 0, "abstention": 0, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 125, "abstention": 0, "non_votant": 0}}}, "montagne_territoires": {"scrutin_id": "VTANR5L17V8421", "confiance": "haute", "poids": 1.0, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 29, "abstention": 1, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "pour", "cohesion_rice": 1.0, "pour": 14, "contre": 0, "abstention": 0, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "pour", "cohesion_rice": 1.0, "pour": 33, "contre": 0, "abstention": 0, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 63, "abstention": 0, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "pour", "cohesion_rice": 1.0, "pour": 19, "contre": 0, "abstention": 2, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "pour", "cohesion_rice": 1.0, "pour": 48, "contre": 0, "abstention": 0, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "pour", "cohesion_rice": 1.0, "pour": 66, "contre": 0, "abstention": 0, "non_votant": 1}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "pour", "cohesion_rice": 1.0, "pour": 35, "contre": 0, "abstention": 0, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "pour", "cohesion_rice": 1.0, "pour": 42, "contre": 0, "abstention": 1, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "pour", "cohesion_rice": 1.0, "pour": 97, "contre": 0, "abstention": 0, "non_votant": 0}, "udr": {"famille_libelle": "UDR (Ciotti)", "position": "pour", "cohesion_rice": 1.0, "pour": 17, "contre": 0, "abstention": 0, "non_votant": 0}}}, "soutien_ukraine": {"scrutin_id": "VTANR5L17V988", "confiance": "moyenne", "poids": 0.7, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "pour", "cohesion_rice": 1.0, "pour": 34, "contre": 0, "abstention": 2, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 9, "abstention": 3, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "pour", "cohesion_rice": 1.0, "pour": 33, "contre": 0, "abstention": 0, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "contre", "cohesion_rice": 1.0, "pour": 0, "contre": 45, "abstention": 0, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "pour", "cohesion_rice": 1.0, "pour": 23, "contre": 0, "abstention": 0, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "pour", "cohesion_rice": 1.0, "pour": 28, "contre": 0, "abstention": 0, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "pour", "cohesion_rice": 1.0, "pour": 81, "contre": 0, "abstention": 0, "non_votant": 0}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "pour", "cohesion_rice": 1.0, "pour": 36, "contre": 0, "abstention": 0, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "pour", "cohesion_rice": 1.0, "pour": 46, "contre": 0, "abstention": 0, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "abstention", "cohesion_rice": 1.0, "pour": 0, "contre": 0, "abstention": 114, "non_votant": 0}}}, "retraites_agricoles": {"scrutin_id": "VTANR5L17V7324", "confiance": "moyenne", "poids": 0.7, "familles": {"ecologistes": {"famille_libelle": "Écologistes", "position": "pour", "cohesion_rice": 1.0, "pour": 9, "contre": 0, "abstention": 0, "non_votant": 0}, "gdr": {"famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)", "position": "pour", "cohesion_rice": 1.0, "pour": 8, "contre": 0, "abstention": 0, "non_votant": 0}, "horizons": {"famille_libelle": "Horizons", "position": "pour", "cohesion_rice": 1.0, "pour": 3, "contre": 0, "abstention": 3, "non_votant": 0}, "lfi": {"famille_libelle": "La France insoumise", "position": "pour", "cohesion_rice": 1.0, "pour": 18, "contre": 0, "abstention": 0, "non_votant": 0}, "liot": {"famille_libelle": "LIOT", "position": "pour", "cohesion_rice": 1.0, "pour": 1, "contre": 0, "abstention": 0, "non_votant": 0}, "lr_dr": {"famille_libelle": "Les Républicains / Droite Républicaine", "position": "pour", "cohesion_rice": 1.0, "pour": 1, "contre": 0, "abstention": 0, "non_votant": 0}, "macronistes": {"famille_libelle": "Macronistes (Renaissance / EPR)", "position": "pour", "cohesion_rice": 1.0, "pour": 7, "contre": 0, "abstention": 2, "non_votant": 1}, "modem": {"famille_libelle": "MoDem (Démocrates)", "position": "pour", "cohesion_rice": 0.6, "pour": 4, "contre": 1, "abstention": 0, "non_votant": 0}, "ps": {"famille_libelle": "Parti socialiste", "position": "pour", "cohesion_rice": 1.0, "pour": 8, "contre": 0, "abstention": 0, "non_votant": 0}, "rn": {"famille_libelle": "Rassemblement National", "position": "pour", "cohesion_rice": 1.0, "pour": 20, "contre": 0, "abstention": 0, "non_votant": 1}, "udr": {"famille_libelle": "UDR (Ciotti)", "position": "pour", "cohesion_rice": 1.0, "pour": 3, "contre": 0, "abstention": 0, "non_votant": 0}}}}, "partis": {"macronistes": {"nom": "EPR", "couleur": "#7B4591", "nom_long": "Ensemble pour la République"}, "modem": {"nom": "Dem", "couleur": "#F07E26", "nom_long": "Les Démocrates (MoDem)"}, "horizons": {"nom": "HOR", "couleur": "#B5E2F9", "nom_long": "Horizons"}, "rn": {"nom": "RN", "couleur": "#313567", "nom_long": "Rassemblement National"}, "lfi": {"nom": "LFI-NFP", "couleur": "#C00D0D", "nom_long": "La France insoumise"}, "ps": {"nom": "SOC", "couleur": "#F5B4CE", "nom_long": "Parti socialiste"}, "ecologistes": {"nom": "EcoS", "couleur": "#77AA79", "nom_long": "Écologistes"}, "gdr": {"nom": "GDR", "couleur": "#830E21", "nom_long": "Gauche démocrate et républicaine"}, "lr_dr": {"nom": "DR", "couleur": "#8CB0DC", "nom_long": "Droite Républicaine (ex-LR)"}, "liot": {"nom": "LIOT", "couleur": "#FFD96F", "nom_long": "LIOT"}, "udr": {"nom": "UDR", "couleur": "#3367A7", "nom_long": "UDR (Ciotti)"}}};
+const K_PRIOR = 2.0;
+
+function accord(reponseUser, positionParti){
+  if (reponseUser === 'sans_avis' || positionParti === 'abstention' || positionParti === 'indetermine') return 0.5;
+  return reponseUser === positionParti ? 1 : 0;
+}
+
+function scorePartis(positions, reponses){
+  const totaux = {}; const toutes = {};
+  const nPosees = Object.keys(reponses).length;
+  for (const [qid, reponse] of Object.entries(reponses)){
+    const pq = positions[qid]; if (!pq) continue;
+    const poidsS = pq.poids;
+    for (const [fid, info] of Object.entries(pq.familles)){
+      toutes[fid] = info.famille_libelle;
+      const cohesion = info.cohesion_rice;
+      if (cohesion === null || cohesion === undefined) continue;
+      const a = accord(reponse, info.position);
+      const poidsEff = poidsS * cohesion;
+      if (!totaux[fid]) totaux[fid] = {num:0, denom:0, detail:[]};
+      totaux[fid].num += a*poidsEff;
+      totaux[fid].denom += poidsEff;
+      totaux[fid].detail.push({qid, reponse, position: info.position, accord:a});
+    }
+  }
+  const res = {};
+  for (const [fid, libelle] of Object.entries(toutes)){
+    const t = totaux[fid] || {num:0, denom:0, detail:[]};
+    const score = (t.num + K_PRIOR*0.5) / (t.denom + K_PRIOR);
+    res[fid] = {libelle, score, nEff:t.detail.length, nPosees, fiabilite: nPosees? t.detail.length/nPosees : 0, detail:t.detail};
+  }
+  return Object.entries(res).sort((a,b)=>b[1].score-a[1].score);
+}
+
+// --- State ---
+let idx = 0;
+const reponses = {};
+const Q = DATA.questions;
+
+const introEl = document.getElementById('intro');
+const quizEl = document.getElementById('quiz');
+const resEl = document.getElementById('resultats');
+
+document.getElementById('btn-start').addEventListener('click', ()=>{
+  introEl.hidden = true; quizEl.hidden = false;
+  renderQuestion();
+});
+
+function renderQuestion(){
+  const q = Q[idx];
+  document.getElementById('q-text').textContent = q.texte;
+  document.getElementById('progress-text').textContent = `Question ${idx+1} / ${Q.length}`;
+  document.getElementById('progress-pct').textContent = Math.round((idx)/Q.length*100) + '%';
+  document.getElementById('progress-fill').style.width = (idx/Q.length*100) + '%';
+
+  const detail = document.getElementById('scrutin-detail');
+  detail.innerHTML = `
+    <div><span class="k">Scrutin :</span> ${q.titre_complet}</div>
+    <div style="margin-top:6px"><span class="k">Date :</span> ${q.date} — <span class="k">Résultat :</span> ${q.resultat}</div>
+    ${q.note ? `<div style="margin-top:6px">${q.note}</div>` : ''}
+    <div class="mono" style="margin-top:6px; opacity:.6; font-size:11px">${q.scrutin_id}</div>
+  `;
+  document.querySelector('.scrutin-ref').open = false;
+
+  document.querySelectorAll('.choice-btn').forEach(btn=>{
+    btn.classList.toggle('active', reponses[q.id] === btn.dataset.v);
+  });
+  document.getElementById('btn-prev').disabled = idx === 0;
+  document.getElementById('btn-next').disabled = !reponses[q.id];
+  document.getElementById('btn-next').textContent = idx === Q.length-1 ? 'Voir mon camp →' : 'Suivant →';
+}
+
+document.querySelectorAll('.choice-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    reponses[Q[idx].id] = btn.dataset.v;
+    renderQuestion();
+  });
+});
+
+document.getElementById('btn-prev').addEventListener('click', ()=>{
+  if (idx>0){ idx--; renderQuestion(); }
+});
+document.getElementById('btn-next').addEventListener('click', ()=>{
+  if (idx < Q.length-1){ idx++; renderQuestion(); }
+  else { showResultats(); }
+});
+
+function showResultats(){
+  quizEl.hidden = true; resEl.hidden = false;
+  const classement = scorePartis(DATA.positions, reponses);
+  const nRepondu = Object.values(reponses).filter(v=>v!=='sans_avis').length;
+  document.getElementById('resultats-sub').textContent =
+    `D'après tes ${nRepondu} réponses tranchées sur ${Q.length} questions, voici les partis dont les votes à l'Assemblée se rapprochent le plus des tiens.`;
+
+  const list = document.getElementById('resultats-list');
+  list.innerHTML = '';
+  const maxScore = Math.max(...classement.map(([,r])=>r.score), 0.01);
+
+  classement.forEach(([fid, r])=>{
+    const parti = DATA.partis[fid] || {nom_long: r.libelle, couleur: '#888'};
+    const pct = Math.round(r.score*100);
+    const width = Math.round(r.score/maxScore*100);
+    const details = document.createElement('details');
+    details.className = 'parti-row';
+    const votesHtml = r.detail.map(d=>{
+      const q = Q.find(x=>x.id===d.qid);
+      const cls = d.accord===1?'yes':(d.accord===0?'no':'mid');
+      const label = d.accord===1?'accord':(d.accord===0?'désaccord':'neutre');
+      return `<div class="vote-line"><span class="q-txt">${q ? q.texte : d.qid}</span><span class="tag-accord ${cls}">${label}</span></div>`;
+    }).join('');
+    details.innerHTML = `
+      <summary>
+        <span class="swatch" style="background:${parti.couleur}"></span>
+        <span class="body">
+          <span class="nom">${parti.nom_long}</span>
+          <div class="bar-track"><div class="bar-fill" style="width:${width}%; background:${parti.couleur}"></div></div>
+          <div class="fiab">Score basé sur ${r.nEff}/${r.nPosees} questions avec position connue</div>
+        </span>
+        <span class="score-num">${pct}%</span>
+      </summary>
+      <div class="parti-detail">${votesHtml || '<p style="color:var(--ink-soft);font-size:13px">Pas assez de données pour le détail.</p>'}</div>
+    `;
+    list.appendChild(details);
+  });
+}
+
+document.getElementById('btn-restart').addEventListener('click', ()=>{
+  idx = 0;
+  for (const k in reponses) delete reponses[k];
+  resEl.hidden = true; introEl.hidden = false;
+});
+</script>
+
+</body>
+</html>

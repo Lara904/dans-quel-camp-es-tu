@@ -1,0 +1,237 @@
+{
+  "_meta": {
+    "statut": "PROPOSITION — approche révisée : questions sociétales concrètes d'abord, scrutins associés ensuite (plutôt que thème large -> mots-clés -> scrutins).",
+    "methode": "Recherche ciblée par sujet précis dans les titres de scrutins (nom du dispositif/de la loi), priorité aux votes sur l'ensemble d'un texte (plus faciles à transformer en question de quiz qu'un amendement isolé). Un sujet attendu mais absent (IVG, OQTF/titre de séjour) est noté explicitement plutôt que forcé avec un mauvais candidat.",
+    "absents_constates": [
+      "SMIC (salaire minimum, salaire minimum interprofessionnel de croissance) : confirmé absent même après extension à la législature XVI (2022-2024) et recherche en mot entier sous toutes formulations. Le SMIC est revalorisé par décret automatique (indexation légale), pas par un vote de l'Assemblée — explique structurellement l'absence, ce n'est pas une lacune de recherche."
+    ],
+    "extension_legislature_16": {
+      "decision": "Sur demande explicite de l'utilisateur ('il y a forcément eu des votes', 'élargis la période depuis 2023'), la base a été étendue à la législature XVI (22/06/2022 → 09/06/2024, dissolution), en plus de la XVII déjà couverte. Nouveau script scripts/build_db_l16.py, mêmes tables, champ legislature='16'. +4106 scrutins, +602 911 votes, +11 groupes (RE, RN, LFI-NUPES, SOC, Dem, LR, HOR, Ecolo-NUPES, GDR-NUPES, LIOT, NI de l'époque).",
+      "avertissement_methodologique": "Les groupes de la XVI ne sont pas identiques à ceux de la XVII malgré des filiations évidentes (RE/Renaissance -> EPR, LFI-NUPES -> LFI-NFP, Ecolo-NUPES -> EcoS, GDR-NUPES -> GDR) : noms, étiquettes de coalition (NUPES a disparu) et parfois effectifs diffèrent. Pour le moteur de scoring (Phase 4), il faudra décider d'une table de correspondance entre groupes XVI et XVII pour les partis qui ont une continuité claire, plutôt que de les traiter comme des entités totalement distinctes — point à trancher avant la Phase 4."
+    },
+    "questions_retirees": [
+      {
+        "id": "retraites_abrogation_64ans",
+        "raison": "Approfondissement du contenu réel : la proposition de loi RN visant à abroger la réforme des retraites a été vidée de ses deux articles centraux (âge légal à 62 ans, durée à 42 annuités) EN COMMISSION le 23/10/2024, avec les voix du NFP et du socle gouvernemental, 8 jours avant le vote que j'avais sélectionné (31/10/2024, article 2 quinquies). À la fin de l'examen, le texte ne contenait plus que des demandes de rapport. Le vote sur l'ensemble du texte (scrutin distinct, non sélectionné initialement) a d'ailleurs été REJETÉ (119 pour, 197 contre) le même jour. Impossible de confirmer que l'article 2 quinquies porte sur l'âge de départ sans lire le texte intégral (non accessible facilement) — je retire ce scrutin plutôt que de risquer une question de quiz basée sur un contenu que je ne peux pas vérifier. Aucun autre scrutin de la XVIIe législature n'offre de vote net et net sur ce sujet précis (retour à 62 ans) dans ce que j'ai pu identifier.",
+        "sources": [
+          "https://lcp.fr/actualites/abrogation-de-la-reforme-des-retraites-apres-avoir-ete-vide-de-sa-substance-en"
+        ]
+      }
+    ],
+    "theme_retraites_comble": "Gap comblé : un autre scrutin, sans lien avec le texte retiré ci-dessus, a été trouvé et vérifié pour représenter la question 'abroger la réforme des retraites de 2023' — voir la question retraites_reforme_2023 ci-dessous.",
+    "corrections_numeriques": "Plusieurs champs 'nombre_votants' du brouillon précédent étaient en fait des fragments du scrutin_id recopiés par erreur (ex. VTANR5L17V6318 -> 318 au lieu du vrai 535 votants). Tous les champs resultat/nombre_votants de ce fichier ont été recalculés directement depuis la base (table scrutins), pas depuis mes notes manuelles."
+  },
+  "questions": [
+    {
+      "id": "fin_de_vie",
+      "question_quiz": "Faut-il légaliser une aide active à mourir pour les patients en phase avancée ou terminale ?",
+      "scrutin_id": "VTANR5L17V8280",
+      "date": "2026-07-15",
+      "titre_complet": "l'ensemble de la proposition de loi relative au droit à l'aide à mourir (lecture définitive).",
+      "resultat": "adopté (291 pour, 241 contre, 29 abstentions, 561 votants)",
+      "nombre_votants": 561,
+      "confiance": "haute",
+      "note": "CORRECTION : le scrutin_id initial (VTANR5L17V561) était faux — il pointait vers un amendement sans rapport (loi d'urgence Mayotte), probablement une confusion de ma part entre un nombre de votants et un identifiant de scrutin lors de la rédaction initiale. Corrigé avec le vrai scrutin de lecture définitive du 15/07/2026, vérifié directement en base."
+    },
+    {
+      "id": "retraites_reforme_2023",
+      "question_quiz": "Faut-il abroger la réforme des retraites de 2023 (retour à l'âge légal antérieur à 64 ans) ?",
+      "scrutin_id": "VTANR5L17V2257",
+      "date": "2025-06-05",
+      "titre_complet": "la proposition de résolution visant à abroger la loi n° 2023-270 du 14 avril 2023 de financement rectificative de la sécurité sociale pour 2023 dite réforme des retraites.",
+      "resultat": "adopté (198 pour, 35 contre, 0 abstention, 233 votants)",
+      "nombre_votants": 233,
+      "confiance": "haute",
+      "note": "Remplace le scrutin retiré (voir _meta.questions_retirees) : celui-ci est une PROPOSITION DE RÉSOLUTION (déposée par les députés communistes), donc sans valeur législative contraignante — c'est une prise de position politique, pas une abrogation effective. À signaler dans le quiz. Contenu vérifié par 3 sources indépendantes (LCP, Le Club des Juristes, datan.fr) : le titre correspond exactement au contenu réel. Répartition des votes vérifiée en base, cohérente avec le clivage attendu : LFI-NFP, PS, Écologistes, GDR et RN ont voté pour (cohésion 1.0 chacun) ; EPR, Dem, HOR ont voté contre (cohésion 1.0 chacun). Participation faible (233/577) typique d'un vote non contraignant où une partie du camp gouvernemental ne s'est pas déplacée plutôt que de voter contre en nombre.",
+      "sources": [
+        "https://lcp.fr/index.php/actualites/retraites-l-assemblee-approuve-un-texte-des-deputes-communistes-appelant-a-abroger-la",
+        "https://www.leclubdesjuristes.com/en-bref/adoption-de-la-proposition-de-resolution-visant-a-abroger-la-reforme-des-retraites-a-lassemblee-nationale-10944/",
+        "https://datan.fr/votes/legislature-17/vote_2257"
+      ]
+    },
+    {
+      "id": "ivg_constitutionnalisation",
+      "question_quiz": "Faut-il inscrire le droit à l'avortement (IVG) dans la Constitution ?",
+      "scrutin_id": "VTANR5L16V3289",
+      "date": "2024-01-30",
+      "legislature": "16",
+      "titre_complet": "l'ensemble du projet de loi constitutionnelle relatif à la liberté de recourir à l'interruption volontaire de grossesse (première lecture).",
+      "resultat": "adopté (493 pour, 30 contre, 23 abstentions, 546 votants)",
+      "nombre_votants": 546,
+      "confiance": "haute",
+      "note": "Vote de l'Assemblée en première lecture sur le projet de loi du Gouvernement (le vote final et solennel a eu lieu au Congrès du Parlement le 04/03/2024, réunissant Assemblée+Sénat — hors périmètre de ce projet qui ne couvre que les scrutins de l'Assemblée). ATTENTION, discriminant faible : consensus très large (quasi tous les groupes majoritairement 'pour'), la vraie ligne de clivage est interne à RN (46 pour/12 contre/14 abst) et LR (40 pour/15 contre/4 abst) plutôt qu'entre partis — utile pour situer l'utilisateur, mais ne distinguera pas bien les partis entre eux dans le score de proximité.",
+      "sources": [
+        "https://datan.fr/votes/legislature-16/vote_3289"
+      ]
+    },
+    {
+      "id": "rsa_conditionnalite",
+      "question_quiz": "Faut-il conditionner le versement du RSA à 15 heures d'activité hebdomadaire (formation, stage, bénévolat) ?",
+      "scrutin_id": "VTANR5L16V2965",
+      "date": "2023-11-14",
+      "legislature": "16",
+      "titre_complet": "l'ensemble du projet de loi pour le plein emploi (texte de la commission mixte paritaire).",
+      "resultat": "adopté (190 pour, 147 contre, 5 abstentions, 342 votants)",
+      "nombre_votants": 342,
+      "confiance": "haute",
+      "note": "Contenu vérifié (LCP, Public Sénat, Previssima) : le texte final instaure les '15h d'activité' comme condition du RSA et transforme Pôle emploi en France Travail. Clivage net et conforme à l'attendu : RE, LR, Dem, HOR pour ; LFI-NUPES, RN, PS, LIOT, Écolo-NUPES, GDR-NUPES contre — à noter, le RN a voté contre ce texte (pas pour les mêmes raisons que la gauche), signal intéressant pour le positionnement du quiz.",
+      "sources": [
+        "https://datan.fr/votes/legislature-16/vote_2965",
+        "https://www.publicsenat.fr/actualites/parlementaire/rsa-sous-conditions-france-travail-que-contient-le-projet-de-loi-plein-emploi-definitivement-adopte-par-le-parlement"
+      ]
+    },
+    {
+      "id": "nationalite_mayotte",
+      "question_quiz": "Faut-il durcir les conditions d'accès à la nationalité française pour les enfants nés à Mayotte de parents étrangers ?",
+      "scrutin_id": "VTANR5L17V1308",
+      "date": "2025-04-08",
+      "titre_complet": "l'ensemble de la proposition de loi visant à renforcer les conditions d'accès à la nationalité française à Mayotte (texte de la commission mixte paritaire).",
+      "resultat": "adopté (339 pour, 174 contre, 11 abstentions, 524 votants)",
+      "nombre_votants": 524,
+      "confiance": "haute",
+      "note": "Contenu vérifié via LCP : le texte exige désormais que les DEUX parents (et non un seul comme avant) résident régulièrement et sans interruption à Mayotte depuis au moins un an (contre trois mois auparavant) pour que leur enfant né sur l'île acquière la nationalité française à sa majorité. Clivage de vote net et conforme à l'attendu : RN, EPR, DR, Dem, HOR, LIOT pour (cohésion quasi parfaite) ; LFI-NFP, PS, Écologistes, GDR contre (cohésion parfaite). Vote de lecture définitive/CMP retenu plutôt que la première lecture (258 votants, 06/02/2025) pour avoir la version la plus aboutie et la plus large participation.",
+      "sources": [
+        "https://lcp.fr/index.php/actualites/mayotte-l-assemblee-durcit-la-restriction-du-droit-du-sol-au-terme-de-debats-houleux",
+        "https://datan.fr/votes/legislature-17/vote_738"
+      ]
+    },
+    {
+      "id": "impot_ultra_riches",
+      "question_quiz": "Faut-il instaurer un impôt plancher de 2 % sur le patrimoine des contribuables les plus fortunés (type « taxe Zucman ») ?",
+      "scrutin_id": "VTANR5L17V881",
+      "date": "2025-02-20",
+      "titre_complet": "l'ensemble de la proposition de loi instaurant un impôt plancher de 2 % sur le patrimoine des ultra riches (première lecture).",
+      "resultat": "adopté (116 pour, 39 contre, 31 abstentions, 186 votants)",
+      "nombre_votants": 186,
+      "confiance": "haute",
+      "note": "Vote sur l'ensemble, intitulé explicite. Participation plus faible (186) que les autres votes 'ensemble' — à mentionner si le quiz affiche le taux de participation."
+    },
+    {
+      "id": "assurance_chomage",
+      "question_quiz": "Faut-il réduire la durée maximale d'indemnisation chômage après une rupture conventionnelle ?",
+      "scrutin_id": "VTANR5L17V7260",
+      "date": "2026-06-02",
+      "titre_complet": "l'ensemble du projet de loi portant transposition de l'avenant n° 3 du 25 février 2026 au protocole d'accord du 10 novembre 2023 relatif à l'assurance chômage (deuxième lecture).",
+      "resultat": "adopté (353 pour, 114 contre, 37 abstentions, 504 votants)",
+      "nombre_votants": 504,
+      "confiance": "haute",
+      "note": "Vérifié : l'avenant durcit les règles — durée maximale d'indemnisation réduite de 18 à 15 mois (moins de 55 ans), en échange d'un accompagnement renforcé. Ne concerne que les ruptures conventionnelles individuelles, pas tous les demandeurs d'emploi.",
+      "sources": [
+        "https://cms.law/fr/fra/legal-updates/rupture-conventionnelle-les-nouvelles-regles-d-indemnisation-chomage"
+      ]
+    },
+    {
+      "id": "encadrement_loyers",
+      "question_quiz": "Faut-il encadrer les loyers dans les zones tendues ?",
+      "scrutin_id": "VTANR5L17V2262",
+      "date": "2025-06-05",
+      "titre_complet": "l'ensemble de la proposition de loi expérimentant l'encadrement des loyers et améliorant l'habitat dans les outre-mer (première lecture).",
+      "resultat": "adopté (169 pour, 0 contre, 3 abstentions, 172 votants)",
+      "nombre_votants": 172,
+      "confiance": "haute",
+      "note": "ID de scrutin à reconfirmer en base (extrait de la recherche par titre, non ré-interrogé individuellement) avant usage — même procédure que les autres mais non revérifié faute de temps."
+    },
+    {
+      "id": "moratoire_eolien_solaire_fessenheim",
+      "question_quiz": "Faut-il imposer un moratoire sur les nouvelles installations éoliennes et solaires, et rouvrir la centrale nucléaire de Fessenheim ?",
+      "scrutin_id": "VTANR5L17V2653",
+      "date": "2025-06-24",
+      "titre_complet": "l'ensemble de la proposition de loi portant programmation nationale pour l'énergie et le climat pour les années 2025 à 2035 (première lecture).",
+      "resultat": "rejeté (142 pour, 377 contre, 47 abstentions, 566 votants)",
+      "nombre_votants": 566,
+      "confiance": "haute",
+      "note": "Correction après vérification (ma 1ère note indiquait 'adopté' par erreur, sans avoir vérifié — c'est faux). Le texte initial (programmation énergie-climat, origine Sénat) a été profondément remanié en séance par le RN et LR, qui y ont ajouté un moratoire sur l'éolien/le solaire et la réouverture de Fessenheim. Résultat : la gauche ET l'ex-majorité présidentielle (EPR, MoDem, Horizons) ont voté contre (pas pour les mêmes raisons), RN+UDR ont voté pour, LR s'est très majoritairement abstenu. Vérifié indépendamment dans la base : DR (LR) est bien en abstention sur ce scrutin, cohérent avec la source. Question reformulée pour refléter ce que le texte contenait vraiment (moratoire EnR + Fessenheim), pas une question générique sur 'le nucléaire'.",
+      "sources": [
+        "https://www.banquedesterritoires.fr/programmation-energetique-la-proposition-de-loi-gremillet-largement-rejetee-par-les-deputes"
+      ]
+    },
+    {
+      "id": "ratio_soignants_hopital",
+      "question_quiz": "Faut-il imposer un nombre minimum de soignants par patient hospitalisé ?",
+      "scrutin_id": "VTANR5L17V600",
+      "date": "2025-01-23",
+      "titre_complet": "l'ensemble de la proposition de loi, adoptée par le Sénat, relative à l'instauration d'un nombre minimum de soignants par patient hospitalisé (première lecture).",
+      "resultat": "adopté (138 pour, 3 contre, 70 abstentions, 211 votants)",
+      "nombre_votants": 211,
+      "confiance": "haute",
+      "note": "Vote sur l'ensemble, intitulé explicite, sujet hôpital/santé publique bien identifié (absent de la curation thématique précédente)."
+    },
+    {
+      "id": "securite_ordre_public",
+      "question_quiz": "Faut-il renforcer les pouvoirs des forces de l'ordre pour répondre aux troubles à l'ordre public ?",
+      "scrutin_id": "VTANR5L17V8433",
+      "date": "2026-07-21",
+      "titre_complet": "l'ensemble du projet de loi visant à offrir des réponses immédiates aux phénomènes troublant l'ordre public, la sécurité et la tranquillité de nos concitoyens (texte de la commission mixte paritaire).",
+      "resultat": "adopté (351 pour, 179 contre, 7 abstentions, 537 votants)",
+      "nombre_votants": 537,
+      "confiance": "haute",
+      "note": "Inchangé depuis la 1ère curation."
+    },
+    {
+      "id": "narcotrafic_retention",
+      "question_quiz": "Faut-il renforcer la rétention administrative et les mesures de sécurité contre le narcotrafic et le risque terroriste ?",
+      "scrutin_id": "VTANR5L17V6318",
+      "date": "2026-05-05",
+      "titre_complet": "l'ensemble de la proposition de loi visant à renforcer la sécurité, la rétention administrative et la prévention des risques d'attentat (première lecture).",
+      "resultat": "adopté (345 pour, 177 contre, 13 abstentions, 535 votants)",
+      "nombre_votants": 535,
+      "confiance": "haute",
+      "note": "Inchangé depuis la 1ère curation."
+    },
+    {
+      "id": "fraude_fiscale_sociale",
+      "question_quiz": "Faut-il renforcer la lutte contre la fraude fiscale et sociale ?",
+      "scrutin_id": "VTANR5L17V6023",
+      "date": "2026-04-07",
+      "titre_complet": "l'ensemble du projet de loi relatif à la lutte contre les fraudes sociales et fiscales (première lecture).",
+      "resultat": "adopté (363 pour, 194 contre, 9 abstentions, 566 votants)",
+      "nombre_votants": 566,
+      "confiance": "haute",
+      "note": "Inchangé depuis la 1ère curation."
+    },
+    {
+      "id": "budget_2025",
+      "question_quiz": "Étiez-vous favorable au volet recettes du budget de l'État pour 2025 ?",
+      "scrutin_id": "VTANR5L17V438",
+      "date": "2024-11-12",
+      "titre_complet": "la première partie du projet de loi de finances pour 2025 (première lecture).",
+      "resultat": "rejeté (192 pour, 362 contre, 19 abstentions, 573 votants)",
+      "confiance": "haute",
+      "note": "Inchangé depuis la 1ère curation.",
+      "nombre_votants": 573
+    },
+    {
+      "id": "montagne_territoires",
+      "question_quiz": "Faut-il adopter des mesures spécifiques de soutien aux territoires de montagne ?",
+      "scrutin_id": "VTANR5L17V8421",
+      "date": "2026-07-20",
+      "titre_complet": "l'ensemble de la proposition de loi pour une montagne vivante et souveraine (texte de la commission mixte paritaire).",
+      "resultat": "adopté (376 pour, 92 contre, 4 abstentions, 472 votants)",
+      "confiance": "haute",
+      "note": "Inchangé depuis la 1ère curation.",
+      "nombre_votants": 472
+    },
+    {
+      "id": "soutien_ukraine",
+      "question_quiz": "La France doit-elle renforcer son soutien à l'Ukraine face à la Russie ?",
+      "scrutin_id": "VTANR5L17V988",
+      "date": "2025-03-12",
+      "titre_complet": "l'article unique de la proposition de résolution européenne appelant au renforcement du soutien à l'Ukraine.",
+      "resultat": "adopté (288 pour, 54 contre, 132 abstentions, 474 votants)",
+      "confiance": "moyenne",
+      "note": "Résolution (non contraignante) plutôt que loi — à signaler dans le quiz que c'est une prise de position politique, pas une mesure concrète votée.",
+      "nombre_votants": 474
+    },
+    {
+      "id": "retraites_agricoles",
+      "question_quiz": "Faut-il revaloriser les pensions de retraite des agriculteurs ?",
+      "scrutin_id": "VTANR5L17V7324",
+      "date": "2026-06-04",
+      "titre_complet": "l'ensemble de la proposition de loi portant plusieurs mesures de justice en faveur de la revalorisation des pensions de retraites agricoles (première lecture).",
+      "resultat": "adopté (82 pour, 1 contre, 5 abstentions, 88 votants)",
+      "nombre_votants": 88,
+      "confiance": "moyenne",
+      "note": "Participation assez faible (88/577) — sujet plus consensuel, risque de ne pas bien différencier les partis. À tester avec le calcul de cohésion avant de l'inclure dans le quiz final."
+    }
+  ]
+}

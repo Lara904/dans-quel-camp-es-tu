@@ -1,0 +1,1705 @@
+{
+  "fin_de_vie": {
+    "scrutin_id": "VTANR5L17V8280",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "pour",
+        "cohesion_rice": 0.886,
+        "pour": 33,
+        "contre": 2,
+        "abstention": 1,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "pour",
+        "cohesion_rice": 0.667,
+        "pour": 10,
+        "contre": 2,
+        "abstention": 3,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "contre",
+        "cohesion_rice": 0.059,
+        "pour": 16,
+        "contre": 18,
+        "abstention": 1,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "pour",
+        "cohesion_rice": 0.937,
+        "pour": 61,
+        "contre": 2,
+        "abstention": 3,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "pour",
+        "cohesion_rice": 0.111,
+        "pour": 10,
+        "contre": 8,
+        "abstention": 4,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "contre",
+        "cohesion_rice": 0.783,
+        "pour": 5,
+        "contre": 41,
+        "abstention": 2,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "pour",
+        "cohesion_rice": 0.561,
+        "pour": 64,
+        "contre": 18,
+        "abstention": 9,
+        "non_votant": 0
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "pour",
+        "cohesion_rice": 0.111,
+        "pour": 20,
+        "contre": 16,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "pour",
+        "cohesion_rice": 0.869,
+        "pour": 57,
+        "contre": 4,
+        "abstention": 6,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "contre",
+        "cohesion_rice": 0.797,
+        "pour": 12,
+        "contre": 106,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "udr": {
+        "famille_libelle": "UDR (Ciotti)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 17,
+        "abstention": 0,
+        "non_votant": 0
+      }
+    }
+  },
+  "retraites_reforme_2023": {
+    "scrutin_id": "VTANR5L17V2257",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 33,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 1
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 17,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 7,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 59,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "pour",
+        "cohesion_rice": 0.143,
+        "pour": 4,
+        "contre": 3,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 1,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 11,
+        "abstention": 0,
+        "non_votant": 1
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 11,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 44,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 41,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      }
+    }
+  },
+  "ivg_constitutionnalisation": {
+    "scrutin_id": "VTANR5L16V3289",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 23,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 20,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 26,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 75,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "pour",
+        "cohesion_rice": 0.9,
+        "pour": 19,
+        "contre": 1,
+        "abstention": 2,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "pour",
+        "cohesion_rice": 0.455,
+        "pour": 40,
+        "contre": 15,
+        "abstention": 4,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 164,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 47,
+        "contre": 0,
+        "abstention": 2,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 31,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "pour",
+        "cohesion_rice": 0.586,
+        "pour": 46,
+        "contre": 12,
+        "abstention": 14,
+        "non_votant": 0
+      }
+    }
+  },
+  "rsa_conditionnalite": {
+    "scrutin_id": "VTANR5L16V2965",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 9,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 8,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 20,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 50,
+        "abstention": 0,
+        "non_votant": 1
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 10,
+        "abstention": 4,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 36,
+        "contre": 0,
+        "abstention": 1,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 102,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 31,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 20,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 49,
+        "abstention": 0,
+        "non_votant": 0
+      }
+    }
+  },
+  "nationalite_mayotte": {
+    "scrutin_id": "VTANR5L17V1308",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 32,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 13,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 32,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 65,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 13,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 47,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 73,
+        "contre": 0,
+        "abstention": 4,
+        "non_votant": 2
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "pour",
+        "cohesion_rice": 0.935,
+        "pour": 30,
+        "contre": 1,
+        "abstention": 3,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 61,
+        "abstention": 3,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 122,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      }
+    }
+  },
+  "impot_ultra_riches": {
+    "scrutin_id": "VTANR5L17V881",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 38,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 5,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 7,
+        "abstention": 3,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 37,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 3,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 16,
+        "abstention": 0,
+        "non_votant": 1
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 9,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 36,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "abstention",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 0,
+        "abstention": 28,
+        "non_votant": 0
+      }
+    }
+  },
+  "assurance_chomage": {
+    "scrutin_id": "VTANR5L17V7260",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 14,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 17,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 30,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 63,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "pour",
+        "cohesion_rice": 0.81,
+        "pour": 19,
+        "contre": 2,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 44,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 87,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 1
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 33,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "contre",
+        "cohesion_rice": 0.895,
+        "pour": 1,
+        "contre": 18,
+        "abstention": 37,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 115,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "udr": {
+        "famille_libelle": "UDR (Ciotti)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 14,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      }
+    }
+  },
+  "encadrement_loyers": {
+    "scrutin_id": "VTANR5L17V2262",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 22,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 1
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 17,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 7,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 33,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 1,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 2,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 13,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 1
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 8,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 26,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 39,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      }
+    }
+  },
+  "moratoire_eolien_solaire_fessenheim": {
+    "scrutin_id": "VTANR5L17V2653",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 37,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 13,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 34,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 71,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 23,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 2,
+        "contre": 0,
+        "abstention": 46,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 90,
+        "abstention": 1,
+        "non_votant": 1
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 36,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 66,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 122,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      }
+    }
+  },
+  "ratio_soignants_hopital": {
+    "scrutin_id": "VTANR5L17V600",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 27,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 6,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "contre",
+        "cohesion_rice": 0.333,
+        "pour": 1,
+        "contre": 2,
+        "abstention": 7,
+        "non_votant": 1
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 35,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 4,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 2,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 2
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 1,
+        "abstention": 26,
+        "non_votant": 4
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 1,
+        "contre": 0,
+        "abstention": 6,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 62,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "abstention",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 0,
+        "abstention": 30,
+        "non_votant": 0
+      }
+    }
+  },
+  "securite_ordre_public": {
+    "scrutin_id": "VTANR5L17V8433",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 36,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 15,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 32,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 1
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 71,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "pour",
+        "cohesion_rice": 0.895,
+        "pour": 18,
+        "contre": 1,
+        "abstention": 4,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 46,
+        "contre": 0,
+        "abstention": 1,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 84,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 1
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 33,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 56,
+        "abstention": 1,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 114,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "udr": {
+        "famille_libelle": "UDR (Ciotti)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 17,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      }
+    }
+  },
+  "narcotrafic_retention": {
+    "scrutin_id": "VTANR5L17V6318",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 36,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 15,
+        "abstention": 1,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 35,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 67,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 11,
+        "contre": 0,
+        "abstention": 10,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 44,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 80,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 1
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 33,
+        "contre": 0,
+        "abstention": 2,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 58,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 117,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "udr": {
+        "famille_libelle": "UDR (Ciotti)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 17,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      }
+    }
+  },
+  "fraude_fiscale_sociale": {
+    "scrutin_id": "VTANR5L17V6023",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 35,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 17,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 32,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 71,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "pour",
+        "cohesion_rice": 0.857,
+        "pour": 13,
+        "contre": 1,
+        "abstention": 8,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 48,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 87,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 36,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 69,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 122,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "udr": {
+        "famille_libelle": "UDR (Ciotti)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 17,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      }
+    }
+  },
+  "budget_2025": {
+    "scrutin_id": "VTANR5L17V438",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 37,
+        "contre": 0,
+        "abstention": 1,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 17,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 34,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 71,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 12,
+        "abstention": 11,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 47,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "contre",
+        "cohesion_rice": 0.977,
+        "pour": 1,
+        "contre": 87,
+        "abstention": 4,
+        "non_votant": 1
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 36,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 66,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 125,
+        "abstention": 0,
+        "non_votant": 0
+      }
+    }
+  },
+  "montagne_territoires": {
+    "scrutin_id": "VTANR5L17V8421",
+    "confiance": "haute",
+    "poids": 1.0,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 29,
+        "abstention": 1,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 14,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 33,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 63,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 19,
+        "contre": 0,
+        "abstention": 2,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 48,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 66,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 1
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 35,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 42,
+        "contre": 0,
+        "abstention": 1,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 97,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "udr": {
+        "famille_libelle": "UDR (Ciotti)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 17,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      }
+    }
+  },
+  "soutien_ukraine": {
+    "scrutin_id": "VTANR5L17V988",
+    "confiance": "moyenne",
+    "poids": 0.7,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 34,
+        "contre": 0,
+        "abstention": 2,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 9,
+        "abstention": 3,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 33,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "contre",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 45,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 23,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 28,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 81,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 36,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 46,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "abstention",
+        "cohesion_rice": 1.0,
+        "pour": 0,
+        "contre": 0,
+        "abstention": 114,
+        "non_votant": 0
+      }
+    }
+  },
+  "retraites_agricoles": {
+    "scrutin_id": "VTANR5L17V7324",
+    "confiance": "moyenne",
+    "poids": 0.7,
+    "familles": {
+      "ecologistes": {
+        "famille_libelle": "Écologistes",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 9,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "gdr": {
+        "famille_libelle": "Gauche démocrate et républicaine (PCF et apparentés)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 8,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "horizons": {
+        "famille_libelle": "Horizons",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 3,
+        "contre": 0,
+        "abstention": 3,
+        "non_votant": 0
+      },
+      "lfi": {
+        "famille_libelle": "La France insoumise",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 18,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "liot": {
+        "famille_libelle": "LIOT",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 1,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "lr_dr": {
+        "famille_libelle": "Les Républicains / Droite Républicaine",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 1,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "macronistes": {
+        "famille_libelle": "Macronistes (Renaissance / EPR)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 7,
+        "contre": 0,
+        "abstention": 2,
+        "non_votant": 1
+      },
+      "modem": {
+        "famille_libelle": "MoDem (Démocrates)",
+        "position": "pour",
+        "cohesion_rice": 0.6,
+        "pour": 4,
+        "contre": 1,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "ps": {
+        "famille_libelle": "Parti socialiste",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 8,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      },
+      "rn": {
+        "famille_libelle": "Rassemblement National",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 20,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 1
+      },
+      "udr": {
+        "famille_libelle": "UDR (Ciotti)",
+        "position": "pour",
+        "cohesion_rice": 1.0,
+        "pour": 3,
+        "contre": 0,
+        "abstention": 0,
+        "non_votant": 0
+      }
+    }
+  }
+}

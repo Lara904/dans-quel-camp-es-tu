@@ -1,0 +1,21 @@
+# Données brutes téléchargées (data.assemblee-nationale.fr) — plusieurs
+# centaines de Mo, régénérées par scripts/download_data.sh
+data_raw/
+
+# Base de données générée — plusieurs centaines de Mo, régénérée par la
+# pipeline (voir README.md § Reconstruire la base)
+data/quizz.db
+*.db
+*.db-journal
+
+# Archives téléchargées
+*.zip
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Système
+.DS_Store
