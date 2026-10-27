@@ -18,28 +18,17 @@
   <section class="hero">
     <p class="eyebrow">Quiz politique — données réelles de l'Assemblée nationale</p>
     <h1>Dans quel camp es-tu ?</h1>
-    <p class="lede">17 questions simples sur des sujets concrets (retraites, fiscalité, immigration, écologie…). Pas de programme, pas de promesse : chaque réponse est comparée à un vote réel des député·es, pour trouver le camp qui a voté comme toi.</p>
 
-    <div class="principe">
-      <p><strong>Le principe :</strong> on compare tes opinions aux actes des partis, pas à leurs discours. Chaque question renvoie à un scrutin public réel de l'Assemblée nationale (2022–2026). Un lien « voir le vote » sous chaque question donne la source exacte.</p>
-    </div>
-
-    <div class="meta-box">
-      <div><div class="num">17</div><div class="lbl">questions</div></div>
-      <div><div class="num">11</div><div class="lbl">partis comparés</div></div>
-      <div><div class="num mono" style="font-size:15px">2022–26</div><div class="lbl">période couverte</div></div>
-    </div>
-
-    <p class="eyebrow" style="margin-top:28px">Choisis ton mode</p>
+    <p class="eyebrow" style="margin-top:20px">Choisis ton mode</p>
     <div class="mode-choice">
-      <a class="mode-card" href="quiz.html">
+      <a class="mode-card" href="quiz.html?mode=parti">
         <div class="mode-title">🏛️ Notre parti</div>
         <div class="mode-desc">Découvre les 3 partis dont les votes à l'Assemblée se rapprochent le plus de tes réponses.</div>
       </a>
-      <div class="mode-card disabled">
-        <div class="mode-title">🎤 Notre personnalité politique <span class="badge-soon">bientôt</span></div>
-        <div class="mode-desc">Comparaison au niveau d'un·e député·e ou d'une personnalité (ex. candidat·e 2027) — en préparation.</div>
-      </div>
+      <a class="mode-card" href="quiz.html?mode=perso">
+        <div class="mode-title">🎤 Notre personnalité politique</div>
+        <div class="mode-desc">Découvre les 3 député·es dont le vote personnel à l'Assemblée se rapproche le plus de tes réponses.</div>
+      </a>
     </div>
 
     <p class="footnote">Méthode : pour chaque scrutin, on regarde la position majoritaire de chaque groupe parlementaire et sa cohésion interne (un parti divisé sur un sujet pèse moins sur ce sujet dans son propre score). Les groupes sont unifiés par filiation politique entre les deux dernières législatures. Les abstentions unanimes comptent comme une vraie position, pas comme une absence de donnée. Les scores affichés sont lissés statistiquement pour rester stables même quand un parti n'a pas pris position sur toutes les questions.</p>

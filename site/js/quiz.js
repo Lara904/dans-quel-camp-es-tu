@@ -3,6 +3,14 @@
 
 const Q = window.QUIZ_DATA.questions;
 let idx = 0;
+
+// Mode choisi sur l'accueil (?mode=perso), mémorisé pour la page résultats.
+// S'il n'est pas dans l'URL (ex. retour en arrière), on garde le mode déjà
+// mémorisé plutôt que de forcer 'parti'.
+const modeUrl = new URLSearchParams(window.location.search).get('mode');
+const mode = modeUrl || chargerMode();
+sauvegarderMode(mode);
+
 const reponses = chargerReponses() || {};
 
 function renderQuestion() {

@@ -75,8 +75,9 @@ site/                   Le site à déployer (Netlify, ou n'importe quel héberg
   js/resultats.js        Logique de la page résultats (cercles, partage)
 
 data/                   Données finales du quiz (légères, versionnées)
-  questions_scrutins.json   Les 17 questions + le scrutin réel associé à chacune, avec sources
-  positions_partis.json     Position + cohésion de chaque parti sur chaque question
+  questions_scrutins.json       Les 17 questions + le scrutin réel associé à chacune, avec sources
+  positions_partis.json         Position + cohésion de chaque parti sur chaque question
+  positions_personnalites.json  Vote individuel réel de 16 député·es sur chacune des 17 questions
 
 scripts/                Pipeline de données (Python 3, bibliothèque standard uniquement)
   download_data.sh            Télécharge les données ouvertes officielles de l'Assemblée nationale
@@ -85,8 +86,10 @@ scripts/                Pipeline de données (Python 3, bibliothèque standard u
   build_phase2.py              Cohésion de groupe (indice de Rice) + groupes historiques
   build_phase3.py              Aide à la sélection automatique de scrutins candidats (outil de travail, pas la source finale)
   build_correspondance_partis.py  Fait correspondre les groupes d'une législature à l'autre
-  build_phase4.py              Moteur de scoring (génère positions_partis.json)
-  build_data_js.py             Génère site/js/data.js à partir de questions_scrutins.json + positions_partis.json
+  build_phase4.py              Moteur de scoring par parti (génère positions_partis.json)
+  build_positions_personnalites.py  Extrait le vote individuel réel de 16 député·es sur les 17 scrutins
+                                      (génère positions_personnalites.json, nécessite data/quizz.db)
+  build_data_js.py             Génère site/js/data.js à partir des 3 fichiers data/*.json ci-dessus
                                 (ajoute les libellés courts, les représentant·es de groupe et les descriptions)
 
 netlify.toml             Config Netlify (publie site/)
@@ -169,9 +172,13 @@ python3 scripts/build_phase4.py \
   --questions data/questions_scrutins.json \
   --out data/positions_partis.json
 
-# 7. Répercute le changement dans le site : recopier le contenu de
-#    data/questions_scrutins.json et data/positions_partis.json dans la
-#    section `const DATA = {...}` du JS embarqué dans site/index.html
+# 7. Vote individuel réel des député·es (mode "personnalité") -> régénère
+#    data/positions_personnalites.json
+python3 scripts/build_positions_personnalites.py data/quizz.db
+
+# 8. Répercute les changements dans le site : régénère site/js/data.js à
+#    partir des 3 fichiers data/*.json ci-dessus
+python3 scripts/build_data_js.py
 ```
 
 `scripts/build_phase3.py` propose automatiquement des scrutins candidats par
@@ -266,4 +273,7 @@ données question par question dans `data/questions_scrutins.json`).
 - [x] Questions simplifiées (formulation courte « pour/contre », détail du scrutin en complément)
 - [x] Résultats en cercles de pourcentage (top 3), avec représentant·e et description par parti
 - [x] Partage du résultat (Web Share API + copie dans le presse-papiers en repli)
-- [ ] Mode « notre personnalité politique » (comparaison au niveau d'un·e député·e / candidat·e) — prévu pour une prochaine itération
+- [x] Mode « notre personnalité politique » : comparaison au vote individuel réel de 16 député·es
+      (président·es de groupe + quelques figures nationales) — les personnalités non-député·es
+      (candidat·es déclaré·es sans siège à l'Assemblée) n'ont pas de vote réel à comparer et ne
+      sont donc volontairement pas incluses, pour rester fidèle au principe du projet

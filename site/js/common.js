@@ -3,6 +3,7 @@
 // et <div id="site-footer"> vides, remplies ici au chargement.
 
 const STORAGE_KEY = 'camp_reponses_v1';
+const MODE_KEY = 'camp_mode_v1';
 
 function renderHeader(activePage) {
   const el = document.getElementById('site-header');
@@ -45,6 +46,16 @@ function chargerReponses() {
   } catch (e) {
     return null;
   }
+}
+
+// mode = 'parti' (par défaut) ou 'perso'. Lu depuis l'URL (?mode=perso) sur
+// la page quiz, puis mémorisé pour que la page résultats sache quoi calculer.
+function sauvegarderMode(mode) {
+  try { sessionStorage.setItem(MODE_KEY, mode); } catch (e) {}
+}
+
+function chargerMode() {
+  try { return sessionStorage.getItem(MODE_KEY) || 'parti'; } catch (e) { return 'parti'; }
 }
 
 document.addEventListener('DOMContentLoaded', () => {

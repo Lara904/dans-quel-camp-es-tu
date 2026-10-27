@@ -53,3 +53,44 @@ function scorePartis(positions, reponses) {
 
   return Object.entries(resultats).sort((a, b) => b[1].score - a[1].score);
 }
+
+// scorePersonnalites(personnalites, reponses) -> tableau trié [ [acteurId, {score, ...}], ... ]
+// Même principe que scorePartis, mais la "position" est le vote individuel
+// réel de la personne (pas une position de groupe pondérée par la cohésion) :
+// chaque question connue pèse 1, chaque question sans donnée (indéterminée)
+// est simplement ignorée au dénominateur plutôt que comptée comme désaccord.
+function scorePersonnalites(personnalites, reponses) {
+  const nPosees = Object.keys(reponses).length;
+  const resultats = {};
+
+  for (const [aid, perso] of Object.entries(personnalites)) {
+    let num = 0, denom = 0;
+    const detail = [];
+
+    for (const [qid, reponseUser] of Object.entries(reponses)) {
+      const position = perso.positions[qid];
+      if (!position || position === 'indetermine') continue; // vrai vide de données
+      const a = accord(reponseUser, position);
+      num += a;
+      denom += 1;
+      detail.push({ qid, reponseUser, position, accord: a });
+    }
+
+    const scoreLisse = (num + K_PRIOR * 0.5) / (denom + K_PRIOR);
+    resultats[aid] = {
+      nom: perso.nom,
+      fonction: perso.fonction,
+      familleId: perso.famille_id,
+      partiNom: perso.parti_nom,
+      couleur: perso.couleur,
+      initiales: perso.initiales,
+      score: scoreLisse,
+      nEffectives: detail.length,
+      nPosees,
+      fiabilite: nPosees ? detail.length / nPosees : 0,
+      detail,
+    };
+  }
+
+  return Object.entries(resultats).sort((a, b) => b[1].score - a[1].score);
+}

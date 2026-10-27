@@ -11,7 +11,7 @@ window.QUIZ_DATA = {
    "nombre_votants": 561,
    "confiance": "haute",
    "note": "CORRECTION : le scrutin_id initial (VTANR5L17V561) était faux — il pointait vers un amendement sans rapport (loi d'urgence Mayotte), probablement une confusion de ma part entre un nombre de votants et un identifiant de scrutin lors de la rédaction initiale. Corrigé avec le vrai scrutin de lecture définitive du 15/07/2026, vérifié directement en base.",
-   "texte_court": "Aide active à mourir (euthanasie)"
+   "texte_court": "Euthanasie"
   },
   {
    "id": "retraites_reforme_2023",
@@ -44,7 +44,7 @@ window.QUIZ_DATA = {
    "sources": [
     "https://datan.fr/votes/legislature-16/vote_3289"
    ],
-   "texte_court": "Avortement (IVG) dans la Constitution"
+   "texte_court": "Avortement (IVG)"
   },
   {
    "id": "rsa_conditionnalite",
@@ -61,7 +61,7 @@ window.QUIZ_DATA = {
     "https://datan.fr/votes/legislature-16/vote_2965",
     "https://www.publicsenat.fr/actualites/parlementaire/rsa-sous-conditions-france-travail-que-contient-le-projet-de-loi-plein-emploi-definitivement-adopte-par-le-parlement"
    ],
-   "texte_court": "RSA sous conditions d'activité"
+   "texte_court": "RSA"
   },
   {
    "id": "nationalite_mayotte",
@@ -77,7 +77,7 @@ window.QUIZ_DATA = {
     "https://lcp.fr/index.php/actualites/mayotte-l-assemblee-durcit-la-restriction-du-droit-du-sol-au-terme-de-debats-houleux",
     "https://datan.fr/votes/legislature-17/vote_738"
    ],
-   "texte_court": "Immigration à Mayotte"
+   "texte_court": "Immigration"
   },
   {
    "id": "impot_ultra_riches",
@@ -104,7 +104,7 @@ window.QUIZ_DATA = {
    "sources": [
     "https://cms.law/fr/fra/legal-updates/rupture-conventionnelle-les-nouvelles-regles-d-indemnisation-chomage"
    ],
-   "texte_court": "Durée de l'assurance chômage"
+   "texte_court": "Assurance chômage"
   },
   {
    "id": "encadrement_loyers",
@@ -131,7 +131,7 @@ window.QUIZ_DATA = {
    "sources": [
     "https://www.banquedesterritoires.fr/programmation-energetique-la-proposition-de-loi-gremillet-largement-rejetee-par-les-deputes"
    ],
-   "texte_court": "Nucléaire plutôt qu'éolien/solaire"
+   "texte_court": "Énergie nucléaire"
   },
   {
    "id": "ratio_soignants_hopital",
@@ -143,7 +143,7 @@ window.QUIZ_DATA = {
    "nombre_votants": 211,
    "confiance": "haute",
    "note": "Vote sur l'ensemble, intitulé explicite, sujet hôpital/santé publique bien identifié (absent de la curation thématique précédente).",
-   "texte_court": "Nombre minimum de soignants à l'hôpital"
+   "texte_court": "Personnel soignant à l'hôpital"
   },
   {
    "id": "securite_ordre_public",
@@ -155,7 +155,7 @@ window.QUIZ_DATA = {
    "nombre_votants": 537,
    "confiance": "haute",
    "note": "Inchangé depuis la 1ère curation.",
-   "texte_court": "Pouvoirs des forces de l'ordre"
+   "texte_court": "Sécurité"
   },
   {
    "id": "narcotrafic_retention",
@@ -167,7 +167,7 @@ window.QUIZ_DATA = {
    "nombre_votants": 535,
    "confiance": "haute",
    "note": "Inchangé depuis la 1ère curation.",
-   "texte_court": "Lutte contre le narcotrafic"
+   "texte_court": "Narcotrafic"
   },
   {
    "id": "fraude_fiscale_sociale",
@@ -179,7 +179,7 @@ window.QUIZ_DATA = {
    "nombre_votants": 566,
    "confiance": "haute",
    "note": "Inchangé depuis la 1ère curation.",
-   "texte_court": "Lutte contre la fraude fiscale"
+   "texte_court": "Fraude fiscale"
   },
   {
    "id": "budget_2025",
@@ -191,7 +191,7 @@ window.QUIZ_DATA = {
    "confiance": "haute",
    "note": "Inchangé depuis la 1ère curation.",
    "nombre_votants": 573,
-   "texte_court": "Budget de l'État 2025"
+   "texte_court": "Budget 2025"
   },
   {
    "id": "montagne_territoires",
@@ -203,7 +203,7 @@ window.QUIZ_DATA = {
    "confiance": "haute",
    "note": "Inchangé depuis la 1ère curation.",
    "nombre_votants": 472,
-   "texte_court": "Soutien aux territoires de montagne"
+   "texte_court": "Territoires de montagne"
   },
   {
    "id": "soutien_ukraine",
@@ -215,7 +215,7 @@ window.QUIZ_DATA = {
    "confiance": "moyenne",
    "note": "Résolution (non contraignante) plutôt que loi — à signaler dans le quiz que c'est une prise de position politique, pas une mesure concrète votée.",
    "nombre_votants": 474,
-   "texte_court": "Soutien à l'Ukraine"
+   "texte_court": "Ukraine"
   },
   {
    "id": "retraites_agricoles",
@@ -227,7 +227,7 @@ window.QUIZ_DATA = {
    "nombre_votants": 88,
    "confiance": "moyenne",
    "note": "Participation assez faible (88/577) — sujet plus consensuel, risque de ne pas bien différencier les partis. À tester avec le calcul de cohésion avant de l'inclure dans le quiz final.",
-   "texte_court": "Retraites des agriculteurs"
+   "texte_court": "Retraites agricoles"
   }
  ],
  "positions": {
@@ -2056,6 +2056,440 @@ window.QUIZ_DATA = {
    },
    "description": "Groupe de droite nationale fondé par Éric Ciotti après sa rupture avec Les Républicains, proche du Rassemblement National.",
    "initiales": "UD"
+  }
+ },
+ "personnalites": {
+  "PA722190": {
+   "nom": "Gabriel Attal",
+   "fonction": "Président du groupe Ensemble pour la République",
+   "famille_id": "macronistes",
+   "parti_nom": "EPR",
+   "couleur": "#7B4591",
+   "initiales": "GA",
+   "positions": {
+    "fin_de_vie": "pour",
+    "retraites_reforme_2023": "indetermine",
+    "ivg_constitutionnalisation": "indetermine",
+    "rsa_conditionnalite": "indetermine",
+    "nationalite_mayotte": "pour",
+    "impot_ultra_riches": "contre",
+    "assurance_chomage": "pour",
+    "encadrement_loyers": "indetermine",
+    "moratoire_eolien_solaire_fessenheim": "contre",
+    "ratio_soignants_hopital": "indetermine",
+    "securite_ordre_public": "pour",
+    "narcotrafic_retention": "pour",
+    "fraude_fiscale_sociale": "pour",
+    "budget_2025": "contre",
+    "montagne_territoires": "pour",
+    "soutien_ukraine": "pour",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA607846": {
+   "nom": "Gérald Darmanin",
+   "fonction": "Député, ancien ministre de l'Intérieur",
+   "famille_id": "macronistes",
+   "parti_nom": "EPR",
+   "couleur": "#7B4591",
+   "initiales": "GD",
+   "positions": {
+    "fin_de_vie": "indetermine",
+    "retraites_reforme_2023": "indetermine",
+    "ivg_constitutionnalisation": "indetermine",
+    "rsa_conditionnalite": "indetermine",
+    "nationalite_mayotte": "indetermine",
+    "impot_ultra_riches": "indetermine",
+    "assurance_chomage": "indetermine",
+    "encadrement_loyers": "indetermine",
+    "moratoire_eolien_solaire_fessenheim": "indetermine",
+    "ratio_soignants_hopital": "indetermine",
+    "securite_ordre_public": "indetermine",
+    "narcotrafic_retention": "indetermine",
+    "fraude_fiscale_sociale": "indetermine",
+    "budget_2025": "contre",
+    "montagne_territoires": "indetermine",
+    "soutien_ukraine": "indetermine",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA719938": {
+   "nom": "Marc Fesneau",
+   "fonction": "Président du groupe Les Démocrates (MoDem)",
+   "famille_id": "modem",
+   "parti_nom": "Dem",
+   "couleur": "#F07E26",
+   "initiales": "MF",
+   "positions": {
+    "fin_de_vie": "contre",
+    "retraites_reforme_2023": "contre",
+    "ivg_constitutionnalisation": "indetermine",
+    "rsa_conditionnalite": "indetermine",
+    "nationalite_mayotte": "pour",
+    "impot_ultra_riches": "indetermine",
+    "assurance_chomage": "pour",
+    "encadrement_loyers": "indetermine",
+    "moratoire_eolien_solaire_fessenheim": "contre",
+    "ratio_soignants_hopital": "indetermine",
+    "securite_ordre_public": "pour",
+    "narcotrafic_retention": "pour",
+    "fraude_fiscale_sociale": "pour",
+    "budget_2025": "contre",
+    "montagne_territoires": "pour",
+    "soutien_ukraine": "pour",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA605782": {
+   "nom": "Laurent Marcangeli",
+   "fonction": "Président du groupe Horizons & Indépendants",
+   "famille_id": "horizons",
+   "parti_nom": "HOR",
+   "couleur": "#B5E2F9",
+   "initiales": "LM",
+   "positions": {
+    "fin_de_vie": "contre",
+    "retraites_reforme_2023": "indetermine",
+    "ivg_constitutionnalisation": "pour",
+    "rsa_conditionnalite": "pour",
+    "nationalite_mayotte": "indetermine",
+    "impot_ultra_riches": "indetermine",
+    "assurance_chomage": "pour",
+    "encadrement_loyers": "indetermine",
+    "moratoire_eolien_solaire_fessenheim": "indetermine",
+    "ratio_soignants_hopital": "indetermine",
+    "securite_ordre_public": "pour",
+    "narcotrafic_retention": "pour",
+    "fraude_fiscale_sociale": "pour",
+    "budget_2025": "contre",
+    "montagne_territoires": "pour",
+    "soutien_ukraine": "indetermine",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA720614": {
+   "nom": "Marine Le Pen",
+   "fonction": "Présidente du groupe Rassemblement National",
+   "famille_id": "rn",
+   "parti_nom": "RN",
+   "couleur": "#313567",
+   "initiales": "ML",
+   "positions": {
+    "fin_de_vie": "contre",
+    "retraites_reforme_2023": "pour",
+    "ivg_constitutionnalisation": "pour",
+    "rsa_conditionnalite": "indetermine",
+    "nationalite_mayotte": "pour",
+    "impot_ultra_riches": "indetermine",
+    "assurance_chomage": "indetermine",
+    "encadrement_loyers": "indetermine",
+    "moratoire_eolien_solaire_fessenheim": "pour",
+    "ratio_soignants_hopital": "indetermine",
+    "securite_ordre_public": "pour",
+    "narcotrafic_retention": "pour",
+    "fraude_fiscale_sociale": "pour",
+    "budget_2025": "contre",
+    "montagne_territoires": "pour",
+    "soutien_ukraine": "abstention",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA795778": {
+   "nom": "Jean-Philippe Tanguy",
+   "fonction": "Député, porte-parole économique du RN",
+   "famille_id": "rn",
+   "parti_nom": "RN",
+   "couleur": "#313567",
+   "initiales": "JT",
+   "positions": {
+    "fin_de_vie": "pour",
+    "retraites_reforme_2023": "indetermine",
+    "ivg_constitutionnalisation": "pour",
+    "rsa_conditionnalite": "contre",
+    "nationalite_mayotte": "pour",
+    "impot_ultra_riches": "indetermine",
+    "assurance_chomage": "indetermine",
+    "encadrement_loyers": "pour",
+    "moratoire_eolien_solaire_fessenheim": "pour",
+    "ratio_soignants_hopital": "indetermine",
+    "securite_ordre_public": "pour",
+    "narcotrafic_retention": "pour",
+    "fraude_fiscale_sociale": "pour",
+    "budget_2025": "contre",
+    "montagne_territoires": "indetermine",
+    "soutien_ukraine": "abstention",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA720892": {
+   "nom": "Mathilde Panot",
+   "fonction": "Présidente du groupe La France insoumise",
+   "famille_id": "lfi",
+   "parti_nom": "LFI-NFP",
+   "couleur": "#C00D0D",
+   "initiales": "MP",
+   "positions": {
+    "fin_de_vie": "pour",
+    "retraites_reforme_2023": "pour",
+    "ivg_constitutionnalisation": "pour",
+    "rsa_conditionnalite": "contre",
+    "nationalite_mayotte": "contre",
+    "impot_ultra_riches": "pour",
+    "assurance_chomage": "contre",
+    "encadrement_loyers": "pour",
+    "moratoire_eolien_solaire_fessenheim": "contre",
+    "ratio_soignants_hopital": "indetermine",
+    "securite_ordre_public": "contre",
+    "narcotrafic_retention": "contre",
+    "fraude_fiscale_sociale": "contre",
+    "budget_2025": "pour",
+    "montagne_territoires": "contre",
+    "soutien_ukraine": "contre",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA793444": {
+   "nom": "Manuel Bompard",
+   "fonction": "Député, coordinateur de La France insoumise",
+   "famille_id": "lfi",
+   "parti_nom": "LFI-NFP",
+   "couleur": "#C00D0D",
+   "initiales": "MB",
+   "positions": {
+    "fin_de_vie": "pour",
+    "retraites_reforme_2023": "pour",
+    "ivg_constitutionnalisation": "pour",
+    "rsa_conditionnalite": "contre",
+    "nationalite_mayotte": "contre",
+    "impot_ultra_riches": "pour",
+    "assurance_chomage": "contre",
+    "encadrement_loyers": "pour",
+    "moratoire_eolien_solaire_fessenheim": "contre",
+    "ratio_soignants_hopital": "pour",
+    "securite_ordre_public": "contre",
+    "narcotrafic_retention": "contre",
+    "fraude_fiscale_sociale": "contre",
+    "budget_2025": "pour",
+    "montagne_territoires": "indetermine",
+    "soutien_ukraine": "contre",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA719930": {
+   "nom": "Boris Vallaud",
+   "fonction": "Président du groupe Socialistes et apparentés",
+   "famille_id": "ps",
+   "parti_nom": "SOC",
+   "couleur": "#F5B4CE",
+   "initiales": "BV",
+   "positions": {
+    "fin_de_vie": "pour",
+    "retraites_reforme_2023": "pour",
+    "ivg_constitutionnalisation": "pour",
+    "rsa_conditionnalite": "contre",
+    "nationalite_mayotte": "contre",
+    "impot_ultra_riches": "pour",
+    "assurance_chomage": "abstention",
+    "encadrement_loyers": "indetermine",
+    "moratoire_eolien_solaire_fessenheim": "contre",
+    "ratio_soignants_hopital": "pour",
+    "securite_ordre_public": "contre",
+    "narcotrafic_retention": "contre",
+    "fraude_fiscale_sociale": "contre",
+    "budget_2025": "pour",
+    "montagne_territoires": "pour",
+    "soutien_ukraine": "pour",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA609332": {
+   "nom": "Olivier Faure",
+   "fonction": "Député, premier secrétaire du Parti socialiste",
+   "famille_id": "ps",
+   "parti_nom": "SOC",
+   "couleur": "#F5B4CE",
+   "initiales": "OF",
+   "positions": {
+    "fin_de_vie": "pour",
+    "retraites_reforme_2023": "pour",
+    "ivg_constitutionnalisation": "pour",
+    "rsa_conditionnalite": "indetermine",
+    "nationalite_mayotte": "contre",
+    "impot_ultra_riches": "pour",
+    "assurance_chomage": "indetermine",
+    "encadrement_loyers": "indetermine",
+    "moratoire_eolien_solaire_fessenheim": "contre",
+    "ratio_soignants_hopital": "pour",
+    "securite_ordre_public": "contre",
+    "narcotrafic_retention": "indetermine",
+    "fraude_fiscale_sociale": "contre",
+    "budget_2025": "pour",
+    "montagne_territoires": "indetermine",
+    "soutien_ukraine": "pour",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA794008": {
+   "nom": "Cyrielle Chatelain",
+   "fonction": "Présidente du groupe Écologiste et social",
+   "famille_id": "ecologistes",
+   "parti_nom": "EcoS",
+   "couleur": "#77AA79",
+   "initiales": "CC",
+   "positions": {
+    "fin_de_vie": "indetermine",
+    "retraites_reforme_2023": "pour",
+    "ivg_constitutionnalisation": "pour",
+    "rsa_conditionnalite": "contre",
+    "nationalite_mayotte": "contre",
+    "impot_ultra_riches": "pour",
+    "assurance_chomage": "contre",
+    "encadrement_loyers": "pour",
+    "moratoire_eolien_solaire_fessenheim": "contre",
+    "ratio_soignants_hopital": "pour",
+    "securite_ordre_public": "contre",
+    "narcotrafic_retention": "contre",
+    "fraude_fiscale_sociale": "contre",
+    "budget_2025": "pour",
+    "montagne_territoires": "contre",
+    "soutien_ukraine": "pour",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA267306": {
+   "nom": "André Chassaigne",
+   "fonction": "Président du groupe GDR (PCF et apparentés)",
+   "famille_id": "gdr",
+   "parti_nom": "GDR",
+   "couleur": "#830E21",
+   "initiales": "AC",
+   "positions": {
+    "fin_de_vie": "indetermine",
+    "retraites_reforme_2023": "indetermine",
+    "ivg_constitutionnalisation": "pour",
+    "rsa_conditionnalite": "contre",
+    "nationalite_mayotte": "indetermine",
+    "impot_ultra_riches": "indetermine",
+    "assurance_chomage": "indetermine",
+    "encadrement_loyers": "indetermine",
+    "moratoire_eolien_solaire_fessenheim": "indetermine",
+    "ratio_soignants_hopital": "indetermine",
+    "securite_ordre_public": "indetermine",
+    "narcotrafic_retention": "indetermine",
+    "fraude_fiscale_sociale": "indetermine",
+    "budget_2025": "pour",
+    "montagne_territoires": "indetermine",
+    "soutien_ukraine": "contre",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA267285": {
+   "nom": "Laurent Wauquiez",
+   "fonction": "Président du groupe Droite Républicaine",
+   "famille_id": "lr_dr",
+   "parti_nom": "DR",
+   "couleur": "#8CB0DC",
+   "initiales": "LW",
+   "positions": {
+    "fin_de_vie": "contre",
+    "retraites_reforme_2023": "indetermine",
+    "ivg_constitutionnalisation": "indetermine",
+    "rsa_conditionnalite": "indetermine",
+    "nationalite_mayotte": "pour",
+    "impot_ultra_riches": "indetermine",
+    "assurance_chomage": "pour",
+    "encadrement_loyers": "indetermine",
+    "moratoire_eolien_solaire_fessenheim": "abstention",
+    "ratio_soignants_hopital": "indetermine",
+    "securite_ordre_public": "pour",
+    "narcotrafic_retention": "pour",
+    "fraude_fiscale_sociale": "pour",
+    "budget_2025": "contre",
+    "montagne_territoires": "pour",
+    "soutien_ukraine": "pour",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA720100": {
+   "nom": "Aurélien Pradié",
+   "fonction": "Député, figure de la Droite Républicaine",
+   "famille_id": "lr_dr",
+   "parti_nom": "DR",
+   "couleur": "#8CB0DC",
+   "initiales": "AP",
+   "positions": {
+    "fin_de_vie": "contre",
+    "retraites_reforme_2023": "indetermine",
+    "ivg_constitutionnalisation": "pour",
+    "rsa_conditionnalite": "indetermine",
+    "nationalite_mayotte": "pour",
+    "impot_ultra_riches": "indetermine",
+    "assurance_chomage": "pour",
+    "encadrement_loyers": "indetermine",
+    "moratoire_eolien_solaire_fessenheim": "contre",
+    "ratio_soignants_hopital": "indetermine",
+    "securite_ordre_public": "indetermine",
+    "narcotrafic_retention": "pour",
+    "fraude_fiscale_sociale": "pour",
+    "budget_2025": "contre",
+    "montagne_territoires": "indetermine",
+    "soutien_ukraine": "pour",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA795244": {
+   "nom": "Stéphane Lenormand",
+   "fonction": "Président du groupe LIOT",
+   "famille_id": "liot",
+   "parti_nom": "LIOT",
+   "couleur": "#FFD96F",
+   "initiales": "SL",
+   "positions": {
+    "fin_de_vie": "pour",
+    "retraites_reforme_2023": "pour",
+    "ivg_constitutionnalisation": "pour",
+    "rsa_conditionnalite": "indetermine",
+    "nationalite_mayotte": "pour",
+    "impot_ultra_riches": "indetermine",
+    "assurance_chomage": "contre",
+    "encadrement_loyers": "indetermine",
+    "moratoire_eolien_solaire_fessenheim": "contre",
+    "ratio_soignants_hopital": "indetermine",
+    "securite_ordre_public": "pour",
+    "narcotrafic_retention": "abstention",
+    "fraude_fiscale_sociale": "contre",
+    "budget_2025": "abstention",
+    "montagne_territoires": "pour",
+    "soutien_ukraine": "pour",
+    "retraites_agricoles": "indetermine"
+   }
+  },
+  "PA330240": {
+   "nom": "Éric Ciotti",
+   "fonction": "Président du groupe UDR",
+   "famille_id": "udr",
+   "parti_nom": "UDR",
+   "couleur": "#3367A7",
+   "initiales": "ÉC",
+   "positions": {
+    "fin_de_vie": "contre",
+    "retraites_reforme_2023": "indetermine",
+    "ivg_constitutionnalisation": "pour",
+    "rsa_conditionnalite": "pour",
+    "nationalite_mayotte": "pour",
+    "impot_ultra_riches": "contre",
+    "assurance_chomage": "indetermine",
+    "encadrement_loyers": "indetermine",
+    "moratoire_eolien_solaire_fessenheim": "pour",
+    "ratio_soignants_hopital": "indetermine",
+    "securite_ordre_public": "pour",
+    "narcotrafic_retention": "pour",
+    "fraude_fiscale_sociale": "pour",
+    "budget_2025": "contre",
+    "montagne_territoires": "pour",
+    "soutien_ukraine": "abstention",
+    "retraites_agricoles": "indetermine"
+   }
   }
  }
 };

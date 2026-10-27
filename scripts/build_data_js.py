@@ -13,29 +13,30 @@ import os
 
 SRC_QUESTIONS = 'data/questions_scrutins.json'
 SRC_POSITIONS = 'data/positions_partis.json'
+SRC_PERSONNALITES = 'data/positions_personnalites.json'
 OUT = 'site/js/data.js'
 
 # Libellé court "sujet" affiché en gros titre de la carte (le "avortement pour
 # ou contre" demandé) ; la question d'origine précise (texte legislatif) passe
 # en sous-texte + dans le détail "voir le vote réel correspondant".
 LIBELLES_COURTS = {
-    "fin_de_vie": "Aide active à mourir (euthanasie)",
+    "fin_de_vie": "Euthanasie",
     "retraites_reforme_2023": "Retraites à 64 ans",
-    "ivg_constitutionnalisation": "Avortement (IVG) dans la Constitution",
-    "rsa_conditionnalite": "RSA sous conditions d'activité",
-    "nationalite_mayotte": "Immigration à Mayotte",
+    "ivg_constitutionnalisation": "Avortement (IVG)",
+    "rsa_conditionnalite": "RSA",
+    "nationalite_mayotte": "Immigration",
     "impot_ultra_riches": "Taxe sur les ultra-riches",
-    "assurance_chomage": "Durée de l'assurance chômage",
+    "assurance_chomage": "Assurance chômage",
     "encadrement_loyers": "Encadrement des loyers",
-    "moratoire_eolien_solaire_fessenheim": "Nucléaire plutôt qu'éolien/solaire",
-    "ratio_soignants_hopital": "Nombre minimum de soignants à l'hôpital",
-    "securite_ordre_public": "Pouvoirs des forces de l'ordre",
-    "narcotrafic_retention": "Lutte contre le narcotrafic",
-    "fraude_fiscale_sociale": "Lutte contre la fraude fiscale",
-    "budget_2025": "Budget de l'État 2025",
-    "montagne_territoires": "Soutien aux territoires de montagne",
-    "soutien_ukraine": "Soutien à l'Ukraine",
-    "retraites_agricoles": "Retraites des agriculteurs",
+    "moratoire_eolien_solaire_fessenheim": "Énergie nucléaire",
+    "ratio_soignants_hopital": "Personnel soignant à l'hôpital",
+    "securite_ordre_public": "Sécurité",
+    "narcotrafic_retention": "Narcotrafic",
+    "fraude_fiscale_sociale": "Fraude fiscale",
+    "budget_2025": "Budget 2025",
+    "montagne_territoires": "Territoires de montagne",
+    "soutien_ukraine": "Ukraine",
+    "retraites_agricoles": "Retraites agricoles",
 }
 
 # Métadonnées fixes par famille politique (identifiants = famille_id de
@@ -93,9 +94,17 @@ DESCRIPTIONS = {
 }
 
 
+def initiales_nom_prenom(nom_complet):
+    """'Gabriel Attal' -> 'GA' (une lettre par mot, 2 max) — pour l'avatar généré."""
+    mots = [m for m in nom_complet.split(' ') if m]
+    lettres = [m[0].upper() for m in mots if m[0].isalpha()]
+    return ''.join(lettres[:2]) if lettres else '??'
+
+
 def main():
     questions_doc = json.load(open(SRC_QUESTIONS, encoding='utf-8'))
     positions = json.load(open(SRC_POSITIONS, encoding='utf-8'))
+    personnalites_src = json.load(open(SRC_PERSONNALITES, encoding='utf-8'))
     questions = questions_doc['questions']
 
     for q in questions:
@@ -110,7 +119,20 @@ def main():
             'initiales': ''.join(c for c in meta['nom'] if c.isalpha())[:2].upper(),
         }
 
-    data = {'questions': questions, 'positions': positions, 'partis': partis}
+    personnalites = {}
+    for aid, info in personnalites_src.items():
+        parti = partis[info['famille_id']]
+        personnalites[aid] = {
+            'nom': info['nom'],
+            'fonction': info['fonction'],
+            'famille_id': info['famille_id'],
+            'parti_nom': parti['nom'],
+            'couleur': parti['couleur'],
+            'initiales': initiales_nom_prenom(info['nom']),
+            'positions': info['positions'],
+        }
+
+    data = {'questions': questions, 'positions': positions, 'partis': partis, 'personnalites': personnalites}
 
     js = (
         "// Généré par scripts/build_data_js.py — données du quiz "
@@ -122,7 +144,7 @@ def main():
     with open(OUT, 'w', encoding='utf-8') as f:
         f.write(js)
     print('written', len(js), 'bytes to', OUT)
-    print('n questions', len(questions), 'n partis', len(partis))
+    print('n questions', len(questions), 'n partis', len(partis), 'n personnalites', len(personnalites))
 
 
 if __name__ == '__main__':
