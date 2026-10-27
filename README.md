@@ -64,7 +64,15 @@ dans le navigateur de la personne qui fait le quiz.
 
 ```
 site/                   Le site à déployer (Netlify, ou n'importe quel hébergeur statique)
-  index.html            Page unique, autonome (HTML/CSS/JS inline, données du quiz embarquées)
+  index.html            Page d'accueil (présentation + choix du mode)
+  quiz.html             Le questionnaire (17 questions, une à la fois)
+  resultats.html        La page de résultats (top 3 en cercles + classement complet)
+  css/style.css         Feuille de style unique, partagée par toutes les pages
+  js/data.js            Données du quiz générées (questions, partis, représentants) — scripts/build_data_js.py
+  js/scoring.js         Moteur de scoring en JS (même logique que build_phase4.py)
+  js/common.js          Header/footer réutilisables + stockage des réponses (sessionStorage)
+  js/quiz.js            Logique de la page quiz
+  js/resultats.js        Logique de la page résultats (cercles, partage)
 
 data/                   Données finales du quiz (légères, versionnées)
   questions_scrutins.json   Les 17 questions + le scrutin réel associé à chacune, avec sources
@@ -78,6 +86,8 @@ scripts/                Pipeline de données (Python 3, bibliothèque standard u
   build_phase3.py              Aide à la sélection automatique de scrutins candidats (outil de travail, pas la source finale)
   build_correspondance_partis.py  Fait correspondre les groupes d'une législature à l'autre
   build_phase4.py              Moteur de scoring (génère positions_partis.json)
+  build_data_js.py             Génère site/js/data.js à partir de questions_scrutins.json + positions_partis.json
+                                (ajoute les libellés courts, les représentant·es de groupe et les descriptions)
 
 netlify.toml             Config Netlify (publie site/)
 .gitignore
@@ -86,9 +96,14 @@ netlify.toml             Config Netlify (publie site/)
 `data/quizz.db` (la base SQLite complète, ~280 Mo, 1,9M+ votes individuels)
 et les données brutes téléchargées (~300-600 Mo) ne sont **pas** versionnées
 dans ce dépôt — trop lourd pour git, et entièrement régénérable. Le site n'en
-a de toute façon pas besoin : `site/index.html` embarque directement les
-données finales (~85 Ko au total), c'est tout ce qu'il faut pour le faire
-tourner.
+a de toute façon pas besoin : `site/js/data.js` embarque directement les
+données finales (~55 Ko), c'est tout ce qu'il faut pour le faire tourner —
+aucun backend, aucune base de données au moment de la visite.
+
+**Représentant·es affichés en résultat :** président·e du groupe parlementaire
+à l'Assemblée nationale (le niveau pertinent ici, puisque tout le quiz est basé
+sur des votes de groupe), affiché·e en nom + avatar généré (initiales, couleur
+du parti) plutôt qu'en photo réelle.
 
 ## Déployer sur Netlify
 
@@ -247,5 +262,8 @@ données question par question dans `data/questions_scrutins.json`).
 - [x] Indice de cohésion de groupe
 - [x] Sélection et vérification des 17 questions
 - [x] Moteur de scoring (correspondance des partis, lissage statistique, gestion de l'abstention)
-- [x] Quiz fonctionnel (site statique)
-- [ ] Finitions produit (partage de résultat, page d'accueil enrichie, etc.)
+- [x] Quiz fonctionnel (site statique multi-pages : accueil / quiz / résultats)
+- [x] Questions simplifiées (formulation courte « pour/contre », détail du scrutin en complément)
+- [x] Résultats en cercles de pourcentage (top 3), avec représentant·e et description par parti
+- [x] Partage du résultat (Web Share API + copie dans le presse-papiers en repli)
+- [ ] Mode « notre personnalité politique » (comparaison au niveau d'un·e député·e / candidat·e) — prévu pour une prochaine itération

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mes résultats — Dans quel camp es-tu ?</title>
+<meta name="description" content="Les partis dont les votes à l'Assemblée se rapprochent le plus de mes réponses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<div class="wrap">
+  <section id="resultats">
+    <p class="eyebrow">Dépouillement</p>
+    <h1>Ton camp</h1>
+    <p class="resultats-sub" id="resultats-sub"></p>
+
+    <div class="top3" id="top3"></div>
+
+    <details class="classement-complet">
+      <summary>Voir le classement complet des 11 partis</summary>
+      <div id="classement-complet-list"></div>
+    </details>
+
+    <div class="actions-row">
+      <button class="btn-secondary" id="btn-share">↗ Partager mon résultat</button>
+      <button class="btn-secondary" id="btn-restart">↺ Refaire le quiz</button>
+    </div>
+    <p class="share-feedback" id="share-feedback"></p>
+
+    <p class="footnote">Les scores reflètent la proximité entre tes réponses et les votes réels enregistrés à l'Assemblée nationale — pas une recommandation de vote. Un score élevé peut aussi venir d'un accord « par coïncidence » entre deux partis qui votent pareil pour des raisons opposées : ouvre le détail d'un parti pour voir question par question.</p>
+  </section>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="js/data.js"></script>
+<script src="js/scoring.js"></script>
+<script src="js/common.js"></script>
+<script src="js/resultats.js"></script>
+<script>renderHeader('resultats');</script>
+</body>
+</html>
