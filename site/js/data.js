@@ -11,7 +11,7 @@ window.QUIZ_DATA = {
    "nombre_votants": 561,
    "confiance": "haute",
    "note": "CORRECTION : le scrutin_id initial (VTANR5L17V561) était faux — il pointait vers un amendement sans rapport (loi d'urgence Mayotte), probablement une confusion de ma part entre un nombre de votants et un identifiant de scrutin lors de la rédaction initiale. Corrigé avec le vrai scrutin de lecture définitive du 15/07/2026, vérifié directement en base.",
-   "texte_court": "Euthanasie"
+   "texte_court": "Autoriser l'aide active à mourir"
   },
   {
    "id": "retraites_reforme_2023",
@@ -28,7 +28,7 @@ window.QUIZ_DATA = {
     "https://www.leclubdesjuristes.com/en-bref/adoption-de-la-proposition-de-resolution-visant-a-abroger-la-reforme-des-retraites-a-lassemblee-nationale-10944/",
     "https://datan.fr/votes/legislature-17/vote_2257"
    ],
-   "texte_court": "Retraites à 64 ans"
+   "texte_court": "Revenir à la retraite à 62 ans"
   },
   {
    "id": "ivg_constitutionnalisation",
@@ -44,7 +44,7 @@ window.QUIZ_DATA = {
    "sources": [
     "https://datan.fr/votes/legislature-16/vote_3289"
    ],
-   "texte_court": "Avortement (IVG)"
+   "texte_court": "Inscrire l'avortement dans la Constitution"
   },
   {
    "id": "rsa_conditionnalite",
@@ -61,7 +61,7 @@ window.QUIZ_DATA = {
     "https://datan.fr/votes/legislature-16/vote_2965",
     "https://www.publicsenat.fr/actualites/parlementaire/rsa-sous-conditions-france-travail-que-contient-le-projet-de-loi-plein-emploi-definitivement-adopte-par-le-parlement"
    ],
-   "texte_court": "RSA"
+   "texte_court": "Conditionner le RSA à une activité"
   },
   {
    "id": "nationalite_mayotte",
@@ -77,7 +77,7 @@ window.QUIZ_DATA = {
     "https://lcp.fr/index.php/actualites/mayotte-l-assemblee-durcit-la-restriction-du-droit-du-sol-au-terme-de-debats-houleux",
     "https://datan.fr/votes/legislature-17/vote_738"
    ],
-   "texte_court": "Immigration"
+   "texte_court": "Restreindre l'immigration"
   },
   {
    "id": "impot_ultra_riches",
@@ -89,7 +89,7 @@ window.QUIZ_DATA = {
    "nombre_votants": 186,
    "confiance": "haute",
    "note": "Vote sur l'ensemble, intitulé explicite. Participation plus faible (186) que les autres votes 'ensemble' — à mentionner si le quiz affiche le taux de participation.",
-   "texte_court": "Taxe sur les ultra-riches"
+   "texte_court": "Taxer davantage les ultra-riches"
   },
   {
    "id": "assurance_chomage",
@@ -104,7 +104,7 @@ window.QUIZ_DATA = {
    "sources": [
     "https://cms.law/fr/fra/legal-updates/rupture-conventionnelle-les-nouvelles-regles-d-indemnisation-chomage"
    ],
-   "texte_court": "Assurance chômage"
+   "texte_court": "Réduire la durée du chômage indemnisé"
   },
   {
    "id": "encadrement_loyers",
@@ -116,7 +116,7 @@ window.QUIZ_DATA = {
    "nombre_votants": 172,
    "confiance": "haute",
    "note": "ID de scrutin à reconfirmer en base (extrait de la recherche par titre, non ré-interrogé individuellement) avant usage — même procédure que les autres mais non revérifié faute de temps.",
-   "texte_court": "Encadrement des loyers"
+   "texte_court": "Encadrer les loyers"
   },
   {
    "id": "moratoire_eolien_solaire_fessenheim",
@@ -131,7 +131,7 @@ window.QUIZ_DATA = {
    "sources": [
     "https://www.banquedesterritoires.fr/programmation-energetique-la-proposition-de-loi-gremillet-largement-rejetee-par-les-deputes"
    ],
-   "texte_court": "Énergie nucléaire"
+   "texte_court": "Relancer le nucléaire plutôt que l'éolien/solaire"
   },
   {
    "id": "ratio_soignants_hopital",
@@ -143,7 +143,7 @@ window.QUIZ_DATA = {
    "nombre_votants": 211,
    "confiance": "haute",
    "note": "Vote sur l'ensemble, intitulé explicite, sujet hôpital/santé publique bien identifié (absent de la curation thématique précédente).",
-   "texte_court": "Personnel soignant à l'hôpital"
+   "texte_court": "Imposer plus de soignants par patient"
   },
   {
    "id": "securite_ordre_public",
@@ -155,7 +155,7 @@ window.QUIZ_DATA = {
    "nombre_votants": 537,
    "confiance": "haute",
    "note": "Inchangé depuis la 1ère curation.",
-   "texte_court": "Sécurité"
+   "texte_court": "Renforcer les pouvoirs de la police"
   },
   {
    "id": "narcotrafic_retention",
@@ -167,7 +167,7 @@ window.QUIZ_DATA = {
    "nombre_votants": 535,
    "confiance": "haute",
    "note": "Inchangé depuis la 1ère curation.",
-   "texte_court": "Narcotrafic"
+   "texte_court": "Durcir la lutte contre le narcotrafic"
   },
   {
    "id": "fraude_fiscale_sociale",
@@ -179,7 +179,7 @@ window.QUIZ_DATA = {
    "nombre_votants": 566,
    "confiance": "haute",
    "note": "Inchangé depuis la 1ère curation.",
-   "texte_court": "Fraude fiscale"
+   "texte_court": "Renforcer la lutte contre la fraude fiscale"
   },
   {
    "id": "budget_2025",
@@ -191,7 +191,7 @@ window.QUIZ_DATA = {
    "confiance": "haute",
    "note": "Inchangé depuis la 1ère curation.",
    "nombre_votants": 573,
-   "texte_court": "Budget 2025"
+   "texte_court": "Augmenter les impôts (budget 2025)"
   },
   {
    "id": "montagne_territoires",
@@ -203,7 +203,7 @@ window.QUIZ_DATA = {
    "confiance": "haute",
    "note": "Inchangé depuis la 1ère curation.",
    "nombre_votants": 472,
-   "texte_court": "Territoires de montagne"
+   "texte_court": "Soutenir les territoires de montagne"
   },
   {
    "id": "soutien_ukraine",
@@ -215,7 +215,7 @@ window.QUIZ_DATA = {
    "confiance": "moyenne",
    "note": "Résolution (non contraignante) plutôt que loi — à signaler dans le quiz que c'est une prise de position politique, pas une mesure concrète votée.",
    "nombre_votants": 474,
-   "texte_court": "Ukraine"
+   "texte_court": "Renforcer le soutien à l'Ukraine"
   },
   {
    "id": "retraites_agricoles",
@@ -227,7 +227,7 @@ window.QUIZ_DATA = {
    "nombre_votants": 88,
    "confiance": "moyenne",
    "note": "Participation assez faible (88/577) — sujet plus consensuel, risque de ne pas bien différencier les partis. À tester avec le calcul de cohésion avant de l'inclure dans le quiz final.",
-   "texte_court": "Retraites agricoles"
+   "texte_court": "Revaloriser les retraites agricoles"
   }
  ],
  "positions": {

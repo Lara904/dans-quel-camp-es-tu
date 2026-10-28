@@ -16,27 +16,28 @@ SRC_POSITIONS = 'data/positions_partis.json'
 SRC_PERSONNALITES = 'data/positions_personnalites.json'
 OUT = 'site/js/data.js'
 
-# Libellé court "sujet" affiché en gros titre de la carte (le "avortement pour
-# ou contre" demandé) ; la question d'origine précise (texte legislatif) passe
-# en sous-texte + dans le détail "voir le vote réel correspondant".
+# Libellé court : une phrase simple (sujet + action), pas un mot isolé — un mot
+# seul ("Narcotrafic") ne veut rien dire pris hors contexte. La question
+# d'origine précise (texte législatif) passe en sous-texte + dans le détail
+# "voir le vote réel correspondant".
 LIBELLES_COURTS = {
-    "fin_de_vie": "Euthanasie",
-    "retraites_reforme_2023": "Retraites à 64 ans",
-    "ivg_constitutionnalisation": "Avortement (IVG)",
-    "rsa_conditionnalite": "RSA",
-    "nationalite_mayotte": "Immigration",
-    "impot_ultra_riches": "Taxe sur les ultra-riches",
-    "assurance_chomage": "Assurance chômage",
-    "encadrement_loyers": "Encadrement des loyers",
-    "moratoire_eolien_solaire_fessenheim": "Énergie nucléaire",
-    "ratio_soignants_hopital": "Personnel soignant à l'hôpital",
-    "securite_ordre_public": "Sécurité",
-    "narcotrafic_retention": "Narcotrafic",
-    "fraude_fiscale_sociale": "Fraude fiscale",
-    "budget_2025": "Budget 2025",
-    "montagne_territoires": "Territoires de montagne",
-    "soutien_ukraine": "Ukraine",
-    "retraites_agricoles": "Retraites agricoles",
+    "fin_de_vie": "Autoriser l'aide active à mourir",
+    "retraites_reforme_2023": "Revenir à la retraite à 62 ans",
+    "ivg_constitutionnalisation": "Inscrire l'avortement dans la Constitution",
+    "rsa_conditionnalite": "Conditionner le RSA à une activité",
+    "nationalite_mayotte": "Restreindre l'immigration",
+    "impot_ultra_riches": "Taxer davantage les ultra-riches",
+    "assurance_chomage": "Réduire la durée du chômage indemnisé",
+    "encadrement_loyers": "Encadrer les loyers",
+    "moratoire_eolien_solaire_fessenheim": "Relancer le nucléaire plutôt que l'éolien/solaire",
+    "ratio_soignants_hopital": "Imposer plus de soignants par patient",
+    "securite_ordre_public": "Renforcer les pouvoirs de la police",
+    "narcotrafic_retention": "Durcir la lutte contre le narcotrafic",
+    "fraude_fiscale_sociale": "Renforcer la lutte contre la fraude fiscale",
+    "budget_2025": "Augmenter les impôts (budget 2025)",
+    "montagne_territoires": "Soutenir les territoires de montagne",
+    "soutien_ukraine": "Renforcer le soutien à l'Ukraine",
+    "retraites_agricoles": "Revaloriser les retraites agricoles",
 }
 
 # Métadonnées fixes par famille politique (identifiants = famille_id de
